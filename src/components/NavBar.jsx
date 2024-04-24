@@ -9,11 +9,13 @@ export const NavBar = () => {
     <header className="sm:w-auto sm:p-0  padding-nx lg:w-[90%] m-auto pb-4">
       <nav className="sm:flex justify-between ">
         <div className="flex justify-center items-center gap-16">
-          <div className="flex justify-center items-center gap-4">
+          <div className="flex justify-center items-center sm:gap-4">
             <div className="sm:block xl:hidden">
               <MenuLink />
             </div>
-            <h1 className="text-2xl font-kumbh font-bold">Sneakers</h1>
+            <h1 className="sm:text-2xl lg:text-[40px] sm:lowercase tracking-tighter text-Very-dark-blue font-kumbh font-bold">
+              Sneakers
+            </h1>
           </div>
           <ul className="flex max-lg:hidden gap-4 justify-center items-center font-kumbh text-sm font-normal text-Grayish-blue mt-8">
             {navLinks.map((link) => (

@@ -19,7 +19,7 @@ export const Hero = () => {
             alt="sneaker product"
             width={450}
             height={400}
-            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none  md:relative md:z-10 md:rounded-md lg:w-[450px] xl:mb-7 "
+            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md  md:relative md:z-10  lg:rounded-xl lg:w-[450px] xl:mb-7 "
           />
         </div>
         <div className="sm:hidden lg:flex gap-7 w-[450px]">
@@ -41,10 +41,10 @@ export const Hero = () => {
       </div>
 
       <div className="sm:pt-0 sm:padding-xn relative xl:w-2/5 flex flex-col items-start max-xl:padding-x lg:padding-t">
-        <p className="sm:uppercase font-kumbh font-bold text-primary-orange mb-2">
-          Sneaker company
+        <p className="sm:uppercase text-xl font-kumbh font-bold text-primary-orange sm:mb-2">
+          sneaker company
         </p>
-        <h1 className="sm:font-kumbh lg:text-4xl  sm:text-[40px] max-sm:leading-[70px] font-bold text-Very-dark-blue mb-6">
+        <h1 className="sm:text-[40px] sm:leading-[40px] sm:font-kumbh lg:text-4xl max-sm:leading-[20px] font-bold text-Very-dark-blue mb-6">
           Fall Limited Edition Sneakers
         </h1>
         <p className="sm:mb-4 sm:leading-8 sm:text-xl font-kumbh text-Dark-grayish-blue lg:leading-7">
@@ -58,7 +58,7 @@ export const Hero = () => {
             <p className="sm:text-3xl text-Very-dark-blue lg:text-2xl font-bold mr-4">
               $125.00
             </p>
-            <p className="sm:text-[14px] sm:text-center text-primary-orange lg:text-[12px] rounded font-kumbh font-bold px-1 py-[.5px] bg-primary-pale-orange">
+            <p className="sm:text-[20px] sm:text-center text-primary-orange lg:text-[12px] rounded font-kumbh font-bold px-2 py-[1px] bg-primary-pale-orange">
               50%
             </p>
           </div>
