@@ -7,9 +7,9 @@ import { ButtonSneaker } from "./ButtonSneaker";
 
 export const LightBox = () => {
   return (
-    <section className="hidden">
+    <section className="">
       <div className="fixed top-0 right-0 w-full h-full bg-Black z-[999] bg-opacity-70 overflow-auto">
-        <div className="absolute flex flex-col justify-center top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-[10px] drop-shadow-[0_0px_10px_rgba(0,0,0,0.3)] mt-4">
+        <div className="absolute flex flex-col justify-center top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-[10px] drop-shadow-[0_0px_10px_rgba(0,0,0,0.3)] mt-6">
           <CloseIcon
             fill="white"
             className="absolute top-[-20px] right-[60px]"
@@ -17,8 +17,8 @@ export const LightBox = () => {
           <div className="relative">
             <img
               src={imageProduct1}
-              width={350}
-              height={300}
+              width={400}
+              height={400}
               alt="Light box"
               className="rounded-md"
             />
@@ -29,9 +29,9 @@ export const LightBox = () => {
               <img src={iconNext} alt="..." />
             </ButtonSneaker>
           </div>
-          <div className="flex gap-4 m-6 w-[350px]">
+          <div className="flex gap-4 m-6 w-[400px]">
             {sneakers.map((sneaker, index) => (
-              <div className="relative">
+              <div className="relative rounded-md" key={sneaker.bigshoe}>
                 <div
                   className={`${
                     index === 0
@@ -39,7 +39,7 @@ export const LightBox = () => {
                       : ""
                   }`}
                 ></div>
-                <div key={sneaker} className="flex-auto rounded-md">
+                <div className="">
                   <LightBoxSneaker imgURL={sneaker} />
                 </div>
               </div>

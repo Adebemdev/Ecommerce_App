@@ -29,6 +29,9 @@
   .padding-n {
     @apply md:px-20 px-10 sm:py-6 py-16;
   }
+  .padding-sm {
+    @apply md:px-8 px-8 sm:py-5 py-10;
+  }
 
   .padding-x {
     @apply sm:px-16 px-8;
@@ -40,13 +43,16 @@
   .padding-y {
     @apply sm:py-20 py-10;
   }
+  .padding-sy {
+    @apply sm:py-8 py-4;
+  }
 
   .padding-l {
-    @apply sm:pl-16 pl-8;
+    @apply sm:pl-20 pl-10;
   }
 
   .padding-r {
-    @apply sm:pr-16 pr-8;
+    @apply sm:pr-20 pr-19;
   }
 
   .padding-t {

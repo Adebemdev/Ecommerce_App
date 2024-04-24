@@ -1,6 +1,6 @@
 export const LightBoxSneaker = ({ imgURL }) => {
   return (
-    <div className="flex items-center bg-card bg-cover bg-center w-16 h-16 max-sm:py-1">
+    <div className="flex items-center bg-card bg-cover bg-center w-20 h-20 max-sm:py-1">
       <img
         src={imgURL.thumbnail}
         width={80}
