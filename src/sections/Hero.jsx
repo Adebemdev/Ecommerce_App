@@ -1,8 +1,10 @@
-import { iconCart, iconMinus, iconPlus } from "../assets/icons";
 import { imageProduct1 } from "../assets/images";
 import { Button } from "../components/Button";
 import { sneakers } from "../constants";
 import { Sneaker } from "../components/Sneaker";
+import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
+import { ReactComponent as MinusIcon } from "../assets/icons/icon-minus.svg";
+import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
 // import { useState } from "react";
 
 export const Hero = () => {
@@ -68,15 +70,21 @@ export const Hero = () => {
             </p>
           </div>
         </div>
+        {/* sm:flex sm:flex-col lg:flex-row  lg:gap-4 mt-2 */}
 
-        <div className="sm:flex  flex flex-wrap gap-4 mt-2">
+        <div className="flex flex-wrap items-center gap-4">
+          {/* Button 1 */}
           <Button
-            iconplus={iconPlus}
-            num={0}
-            iconMinus={iconMinus}
-            backgroundColor="bg-Light-grayish-blue"
-          />
-          <Button label="Add to cart" iconUrl={iconCart} />
+            iconMinus={<MinusIcon />}
+            text={0}
+            iconPlus={<PlusIcon />}
+            className="bg-Grayish-blue"
+          ></Button>
+          <Button
+            iconCart={<CartIcon />}
+            className="bg-primary-orange"
+            text="Add to the cart"
+          ></Button>
         </div>
       </div>
     </section>

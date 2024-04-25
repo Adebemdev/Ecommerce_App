@@ -1,7 +1,4 @@
 import React from "react";
-import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
-import { ReactComponent as MinusIcon } from "../assets/icons/icon-minus.svg";
-import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
 
 // export const Button = ({
 //   label,
@@ -38,37 +35,63 @@ import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
 //   );
 // };
 
-export const Button = ({
-  label,
-  iconplus,
-  num,
-  iconMinus,
-  backgroundColor,
-}) => {
+// export const Button = ({
+//   label,
+//   iconplus,
+//   num,
+//   iconMinus,
+//   backgroundColor,
+// }) => {
+//   return (
+//     <button
+//       className={`sm:inline-block  font-kumbh gap-2 rounded-md ${
+//         backgroundColor
+//           ? `${backgroundColor} ${iconplus} ${num} ${iconMinus}`
+//           : "bg-primary-orange"
+//       }`}
+//     >
+//       <div className="block w-full">
+//         {label && (
+//           <div className="sm:flex lg:max-w-xl px-10 py-2 shadow-3xl gap-4 lg:w-[220px] ">
+//             <CartIcon fill="white" stroke="white" className="w-6 h-6" />
+//             <p className="text-white font-kumbh font-semibold">{label}</p>
+//           </div>
+//         )}
+
+//         {iconMinus && (
+//           <div className="sm:flex lg:w-[150px] items-center justify-between p-1">
+//             <MinusIcon />
+//             {num}
+//             <PlusIcon />
+//           </div>
+//         )}
+//       </div>
+//     </button>
+//   );
+// };
+export const Button = ({ text, iconCart, iconMinus, iconPlus, className }) => {
   return (
     <button
-      className={`sm:inline-block  font-kumbh gap-2 rounded-md ${
-        backgroundColor
-          ? `${backgroundColor} ${iconplus} ${num} ${iconMinus}`
-          : "bg-primary-orange"
+      className={`font-kumb rounded py-2 px-2 flex items-center ${className} ${
+        className === "bg-primary-orange"
+          ? `sm:w-full lg:w-[200px] justify-center gap-2`
+          : ""
+      } ${
+        className === "bg-Grayish-blue"
+          ? "sm:w-full lg:w-1/2 justify-between"
+          : ""
       }`}
     >
-      <div className="block w-full">
-        {label && (
-          <div className="sm:flex lg:max-w-xl px-10 py-2 shadow-3xl gap-4 lg:w-[220px] ">
-            <CartIcon fill="white" stroke="white" className="w-6 h-6" />
-            <p className="text-white font-kumbh font-semibold">{label}</p>
-          </div>
-        )}
+      {
+        <>
+          {iconCart && <span>{iconCart}</span>}
+          {text === "Add to the cart" ? text : ""}
 
-        {iconMinus && (
-          <div className="sm:flex lg:w-[150px] items-center justify-between p-1">
-            <MinusIcon />
-            {num}
-            <PlusIcon />
-          </div>
-        )}
-      </div>
+          {iconMinus && <span>{iconMinus}</span>}
+          {text === 0 ? text : ""}
+          {iconPlus && <span>{iconPlus}</span>}
+        </>
+      }
     </button>
   );
 };
