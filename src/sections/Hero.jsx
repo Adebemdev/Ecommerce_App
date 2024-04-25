@@ -72,7 +72,10 @@ export const Hero = () => {
         </div>
         {/* sm:flex sm:flex-col lg:flex-row  lg:gap-4 mt-2 */}
 
-        <div className="flex flex-wrap items-center gap-4">
+        <div
+          className="flex flex-wrap justify-between
+         items-center gap-4"
+        >
           {/* Button 1 */}
           <Button
             iconMinus={<MinusIcon />}
