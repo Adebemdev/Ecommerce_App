@@ -1,7 +1,8 @@
 import { imageProduct1 } from "../assets/images";
-import { Button } from "../components/Button";
 import { sneakers } from "../constants";
 import { Sneaker } from "../components/Sneaker";
+import IconButton from "../components/IconButton";
+import AnotherIconButton from "../components/AnotherIconButton";
 import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
 import { ReactComponent as MinusIcon } from "../assets/icons/icon-minus.svg";
 import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
@@ -71,18 +72,13 @@ export const Hero = () => {
           </div>
         </div>
         {/* sm:flex sm:flex-col lg:flex-row  lg:gap-4 mt-2 */}
-        <div className="flex flex-col lg:flex-row p-4">
-          <Button
-            iconMinus={<MinusIcon />}
-            text={0}
-            iconPlus={<PlusIcon />}
-            className="bg-Grayish-blue"
-          ></Button>
-          <Button
-            iconCart={<CartIcon fill="white" stroke="white" />}
-            text="Add to cart"
-            className="bg-primary-orange text-white px-2"
-          ></Button>
+        <div className="flex gap-4 w-full sm:flex-col lg:flex-row py-4">
+          <AnotherIconButton icons={[<MinusIcon />, <PlusIcon />]}>
+            0
+          </AnotherIconButton>
+          <IconButton icon={<CartIcon fill="white" stroke="white" />}>
+            Add to cart
+          </IconButton>
         </div>
       </div>
     </section>
