@@ -46,13 +46,13 @@ export const Hero = () => {
         <p className="sm:uppercase text-xl font-kumbh font-bold text-primary-orange sm:mb-2">
           sneaker company
         </p>
-        <h1 className="sm:text-[40px] sm:leading-[40px] sm:font-kumbh lg:text-4xl max-sm:leading-[20px] font-bold text-Very-dark-blue mb-6">
+        <h1 className="sm:text-[30px] sm:leading-[40px] sm:font-kumbh lg:text-4xl max-sm:leading-[20px] font-bold text-Very-dark-blue mb-4">
           Fall Limited Edition Sneakers
         </h1>
-        <p className="sm:mb-4 sm:leading-8 sm:text-xl font-kumbh text-Dark-grayish-blue lg:leading-7">
+        <p className="sm:mb-4 sm:leading-7  lg:text-xl  font-kumbh text-Dark-grayish-blue lg:leading-7">
           These low-profile sneakers are your perfect casual wear companion.
-          Featuring a durable rubber outer sole, they’ll withstand everything
-          the weather can offer.
+          Featuring a durable rubber outer sole,they’ll withstand everything the
+          weather can offer.
         </p>
 
         <div className="sm:flex sm:w-full sm:items-center sm:justify-between lg:flex-col lg:justify-center mb-4 lg:w-[120px] lg:items-start">
@@ -71,12 +71,7 @@ export const Hero = () => {
           </div>
         </div>
         {/* sm:flex sm:flex-col lg:flex-row  lg:gap-4 mt-2 */}
-
-        <div
-          className="flex flex-wrap justify-between
-         items-center gap-4"
-        >
-          {/* Button 1 */}
+        <div className="flex flex-col lg:flex-row p-4">
           <Button
             iconMinus={<MinusIcon />}
             text={0}
@@ -84,9 +79,9 @@ export const Hero = () => {
             className="bg-Grayish-blue"
           ></Button>
           <Button
-            iconCart={<CartIcon />}
-            className="bg-primary-orange"
-            text="Add to the cart"
+            iconCart={<CartIcon fill="white" stroke="white" />}
+            text="Add to cart"
+            className="bg-primary-orange text-white px-2"
           ></Button>
         </div>
       </div>

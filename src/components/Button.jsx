@@ -69,29 +69,19 @@ import React from "react";
 //     </button>
 //   );
 // };
+
 export const Button = ({ text, iconCart, iconMinus, iconPlus, className }) => {
   return (
-    <button
-      className={`font-kumb rounded py-2 px-2 flex items-center ${className} ${
-        className === "bg-primary-orange"
-          ? `sm:w-full lg:w-[200px] justify-center gap-2`
-          : ""
-      } ${
-        className === "bg-Grayish-blue"
-          ? "sm:w-full lg:w-1/2 justify-between"
-          : ""
-      }`}
-    >
-      {
-        <>
-          {iconCart && <span>{iconCart}</span>}
-          {text === "Add to the cart" ? text : ""}
-
-          {iconMinus && <span>{iconMinus}</span>}
-          {text === 0 ? text : ""}
-          {iconPlus && <span>{iconPlus}</span>}
-        </>
-      }
+    <button className={`${className} flex items-center  px-20 ${className}`}>
+      <>
+        {iconCart && <span>{iconCart}</span>}
+        {text !== 0 ? text : ""}
+      </>
+      <>
+        {iconMinus && <span>{iconMinus}</span>}
+        {text === 0 ? text : ""}
+        {iconPlus && <span>{iconPlus}</span>}
+      </>
     </button>
   );
 };
