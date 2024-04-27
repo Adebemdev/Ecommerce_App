@@ -6,6 +6,7 @@ import AnotherIconButton from "../components/AnotherIconButton";
 import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
 import { ReactComponent as MinusIcon } from "../assets/icons/icon-minus.svg";
 import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
+
 // import { useState } from "react";
 
 export const Hero = () => {
@@ -13,16 +14,16 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="sm:pt-0 sm:gap-5 sm:h-auto w-full xl:h-[100vh] pt-10 flex xl:flex-row flex-col justify-center lg:gap-20 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full xl:h-[100vh] pt-10 flex xl:flex-row flex-col justify-center lg:gap-20 max-container"
     >
-      <div className="sm:flex sm:flex-row lg:flex-col gap-4 items-center justify-center">
-        <div>
+      <div className="top-0 right-0 sm:flex sm:flex-row lg:flex-col gap-4 items-center justify-center">
+        <div className="relative">
           <img
             src={imageProduct1}
             alt="sneaker product"
             width={450}
             height={400}
-            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md  md:relative md:z-10  lg:rounded-xl lg:w-[450px] xl:mb-7 "
+            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md  md:z-10  lg:rounded-xl lg:w-[450px] xl:mb-7 "
           />
         </div>
         <div className="sm:hidden lg:flex gap-7 w-[450px]">
