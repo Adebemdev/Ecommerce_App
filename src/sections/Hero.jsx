@@ -6,6 +6,9 @@ import AnotherIconButton from "../components/AnotherIconButton";
 import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
 import { ReactComponent as MinusIcon } from "../assets/icons/icon-minus.svg";
 import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
+import { ReactComponent as NextIcon } from "../assets/icons/icon-next.svg";
+import { ReactComponent as PrevIcon } from "../assets/icons/icon-previous.svg";
+import MobileButton from "../components/MobileButton";
 
 // import { useState } from "react";
 
@@ -25,6 +28,12 @@ export const Hero = () => {
             height={400}
             className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md  md:z-10  lg:rounded-xl lg:w-[450px] xl:mb-7 "
           />
+          <div className="absolute right-0 top-1/2">
+            <MobileButton>{<NextIcon />}</MobileButton>
+          </div>
+          <div className="absolute left-[9%] top-1/2">
+            <MobileButton>{<PrevIcon />}</MobileButton>
+          </div>
         </div>
         <div className="sm:hidden lg:flex gap-7 w-[450px]">
           {sneakers.map((sneaker, index) => (
