@@ -29,7 +29,7 @@ export const sneakers = [
 ];
 
 export const navLinks = [
-  { href: "#Collection", label: "Collection" },
+  { href: "#Collections", label: "Collections" },
   { href: "#Men", label: "Men" },
   { href: "#Women", label: "Women" },
   { href: "#About", label: "About" },
