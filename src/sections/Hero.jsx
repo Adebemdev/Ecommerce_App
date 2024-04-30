@@ -10,6 +10,7 @@ import { ReactComponent as NextIcon } from "../assets/icons/icon-next.svg";
 import { ReactComponent as PrevIcon } from "../assets/icons/icon-previous.svg";
 import MobileButton from "../components/MobileButton";
 import MobileMenuNavBar from "../components/MobileMenuNavBar";
+import MobileDesignBasket from "../components/MobileDesignBasket";
 
 // import { useState } from "react";
 
@@ -92,8 +93,12 @@ export const Hero = () => {
           </IconButton>
         </div>
       </div>
-      <div className="sm:block lg:hidden">
+      <div className="sm:hidden lg:hidden">
         <MobileMenuNavBar />
+      </div>
+
+      <div className="sm:hidden lg:block">
+        <MobileDesignBasket />
       </div>
     </section>
   );
