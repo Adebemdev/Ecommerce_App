@@ -11,6 +11,7 @@ import { ReactComponent as PrevIcon } from "../assets/icons/icon-previous.svg";
 import MobileButton from "../components/MobileButton";
 import MobileMenuNavBar from "../components/MobileMenuNavBar";
 import MobileDesignBasket from "../components/MobileDesignBasket";
+import MobileBasketFilled from "../components/MobileBasketFilled";
 
 // import { useState } from "react";
 
@@ -19,25 +20,25 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full xl:h-[100vh] pt-10 flex xl:flex-row flex-col justify-center lg:gap-20 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full md:h-[100vh] pt-10 flex md:flex-row flex-col justify-center md:gap-20 max-container"
     >
-      <div className="top-0 right-0 sm:flex sm:flex-row lg:flex-col gap-4 items-center justify-center">
+      <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
           <img
             src={imageProduct1}
             alt="sneaker product"
             width={450}
             height={400}
-            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md  md:z-10  lg:rounded-xl lg:w-[450px] xl:mb-7 "
+            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-sm  md:z-10 md:w-[450px] md:mb-7 "
           />
-          <div className="sm:block lg:hidden absolute right-0 top-1/2">
+          <div className="sm:block md:hidden absolute right-0 top-1/2">
             <MobileButton>{<NextIcon />}</MobileButton>
           </div>
-          <div className="sm:block lg:hidden absolute left-[9%] top-1/2">
+          <div className="sm:block md:hidden absolute left-[9%] top-1/2">
             <MobileButton>{<PrevIcon />}</MobileButton>
           </div>
         </div>
-        <div className="sm:hidden lg:flex gap-7 w-[450px]">
+        <div className="sm:hidden md:flex gap-7 w-[450px]">
           {sneakers.map((sneaker, index) => (
             <div className="relative flex-grow" key={sneaker.bigshoe}>
               <div
@@ -55,11 +56,11 @@ export const Hero = () => {
         </div>
       </div>
 
-      <div className="sm:pt-0 sm:padding-xn relative xl:w-2/5 flex flex-col items-start max-xl:padding-x lg:padding-t">
+      <div className="sm:pt-0 sm:padding-xn relative md:w-2/5 flex flex-col items-start max-xl:padding-x md:padding-t">
         <p className="sm:uppercase text-xl font-kumbh font-bold text-primary-orange sm:mb-2">
           sneaker company
         </p>
-        <h1 className="sm:text-[30px] sm:leading-[40px] sm:font-kumbh lg:text-4xl max-sm:leading-[20px] font-bold text-Very-dark-blue mb-4">
+        <h1 className="sm:text-[30px] sm:leading-[40px] sm:font-kumbh md:text-4xl max-sm:leading-[20px] font-bold text-Very-dark-blue mb-4">
           Fall Limited Edition Sneakers
         </h1>
         <p className="sm:mb-4 sm:leading-7  lg:text-xl  font-kumbh text-Dark-grayish-blue lg:leading-7">
@@ -68,23 +69,23 @@ export const Hero = () => {
           weather can offer.
         </p>
 
-        <div className="sm:flex sm:w-full sm:items-center sm:justify-between lg:flex-col lg:justify-center mb-4 lg:w-[120px] lg:items-start">
+        <div className="sm:flex sm:w-full sm:items-center sm:justify-between md:flex-col md:justify-center mb-4 md:w-[120px] md:items-start">
           <div className="sm:flex  items-center justify-center mb-2">
-            <p className="sm:text-3xl text-Very-dark-blue lg:text-2xl font-bold mr-4">
+            <p className="sm:text-3xl text-Very-dark-blue md:text-2xl font-bold mr-4">
               $125.00
             </p>
-            <p className="sm:text-[20px] sm:text-center text-primary-orange lg:text-[12px] rounded font-kumbh font-bold px-2 py-[1px] bg-primary-pale-orange">
+            <p className="sm:text-[20px] sm:text-center text-primary-orange md:text-[12px] rounded font-kumbh font-bold px-2 py-[1px] bg-primary-pale-orange">
               50%
             </p>
           </div>
           <div className="inline-block">
-            <p className="sm:text-lg lg:text-sm text-Grayish-blue font-kumbh font-semibold line-through">
+            <p className="sm:text-lg md:text-sm text-Grayish-blue font-kumbh font-semibold line-through">
               $250.00
             </p>
           </div>
         </div>
         {/* sm:flex sm:flex-col lg:flex-row  lg:gap-4 mt-2 */}
-        <div className="flex gap-4 w-full sm:flex-col lg:flex-row py-4">
+        <div className="flex gap-4 w-full sm:flex-col md:flex-row py-4">
           <AnotherIconButton icons={[<MinusIcon />, <PlusIcon />]}>
             0
           </AnotherIconButton>
@@ -93,12 +94,14 @@ export const Hero = () => {
           </IconButton>
         </div>
       </div>
-      <div className="sm:hidden lg:hidden">
+      <div className="sm:block md:block">
         <MobileMenuNavBar />
       </div>
-
-      <div className="sm:hidden lg:block">
+      <div className="sm:hidden lg:hidden">
         <MobileDesignBasket />
+      </div>
+      <div className="sm:hidden lg:hidden">
+        <MobileBasketFilled />
       </div>
     </section>
   );

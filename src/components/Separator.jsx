@@ -6,7 +6,6 @@ export const Separator = ({ color = "#ced4da", height = 0.5 }) => {
         height: height,
         border: "none",
       }}
-      className="sm:hidden"
     />
   );
 };
