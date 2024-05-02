@@ -5,10 +5,10 @@ import { LightBox } from "./components/LightBox";
 function App() {
   return (
     <main className="relative">
-      <section className="sm:padding-sm md:padding-n md:h-[20vh] ">
+      <section className="sm:padding-sm lg:padding-n md:h-[20vh] ">
         <NavBar />
       </section>
-      <scetion className="sm:p-0 md:padding-l md:padding-l wide:padding-r padding-b h-[80vh]">
+      <scetion className="sm:p-0 lg:padding-l lg:padding-l wide:padding-r padding-b h-[80vh]">
         <Hero />
       </scetion>
       <section className="absolute">

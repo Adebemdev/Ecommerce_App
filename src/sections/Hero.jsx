@@ -10,17 +10,17 @@ import { ReactComponent as NextIcon } from "../assets/icons/icon-next.svg";
 import { ReactComponent as PrevIcon } from "../assets/icons/icon-previous.svg";
 import MobileButton from "../components/MobileButton";
 import MobileMenuNavBar from "../components/MobileMenuNavBar";
-import MobileDesignBasket from "../components/MobileDesignBasket";
 import MobileBasketFilled from "../components/MobileBasketFilled";
+import MobileDesignBasket from "../components/MobileDesignBasket";
 
 // import { useState } from "react";
 
 export const Hero = () => {
   // const [bigShoeImg, setBigShoeImg] = useState(imageProduct1);
   return (
-    <section
+    <header
       id="home"
-      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full md:h-[100vh] pt-10 flex md:flex-row flex-col justify-center md:gap-20 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-100% md:pt-10 flex md:flex-row flex-col justify-center md:gap-20 max-container"
     >
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
@@ -94,15 +94,15 @@ export const Hero = () => {
           </IconButton>
         </div>
       </div>
-      <div className="sm:block md:block">
+      <div className="sm:hidden md:hidden">
         <MobileMenuNavBar />
       </div>
-      <div className="sm:hidden lg:hidden">
-        <MobileDesignBasket />
+      <div>
+        <MobileDesignBasket className="sm:block md:block" />
       </div>
       <div className="sm:hidden lg:hidden">
         <MobileBasketFilled />
       </div>
-    </section>
+    </header>
   );
 };

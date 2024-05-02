@@ -6,7 +6,7 @@ const MobileMenuNavBar = () => {
   return (
     <section>
       <div className="fixed top-0 left-0 w-full h-full bg-black z-[999] bg-opacity-70 overflow-auto">
-        <div className="p-8 bg-white w-[60vh] h-full">
+        <div className="p-8 bg-white sm:w-[25vh] sm:h-full md:w-[50%] md:h-full">
           <CloseIcon fill="#adb5bd" />
           <ul className="flex flex-col gap-4 items-start font-kumbh text-[16px] font-bold text-Very-dark-blue mt-8">
             {navLinks.map((link) => (

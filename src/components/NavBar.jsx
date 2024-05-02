@@ -35,11 +35,11 @@ export const NavBar = () => {
               stroke="#ced4da"
               className="font-normal cursor-pointer"
             />
-            <span className="absolute sm:block md:hidden lg:block grid place-items-center text-center top-[-14px] right-[-12px] w-5 h-5 rounded-full bg-primary-orange text-sm text-White">
+            <span className="absolute sm:block md:block lg:block grid place-items-center text-center top-[-14px] right-[-12px] w-5 h-5 rounded-full bg-primary-orange text-sm text-White">
               3
             </span>
           </div>
-          <img src={imageAvatar} alt="Avatar" className="h-10 w-10" />
+          <img src={imageAvatar} alt="Avatar" className="h-14 w-14" />
         </div>
       </nav>
       <div className="sm:hidden md:block">
