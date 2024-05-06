@@ -6,7 +6,7 @@ import { Separator } from "./Separator";
 
 export const NavBar = () => {
   return (
-    <header className="sm:w-auto sm:p-0  padding-nx md:w-[90%] m-auto pb-4">
+    <header className="fixed z-10 sm:w-auto sm:p-0 padding-nx md:w-[90%] m-auto pb-4">
       <nav className="sm:flex justify-between ">
         <div className="flex justify-center items-center gap-16">
           <div className="flex justify-center items-center sm:gap-4">
