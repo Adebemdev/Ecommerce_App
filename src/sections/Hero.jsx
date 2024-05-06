@@ -20,7 +20,7 @@ export const Hero = () => {
   return (
     <header
       id="home"
-      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-100% md:pt-10 flex md:flex-row flex-col justify-center md:gap-20 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-10 flex md:flex-row flex-col justify-center md:gap-20 max-container"
     >
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
