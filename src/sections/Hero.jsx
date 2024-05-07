@@ -20,17 +20,19 @@ export const Hero = () => {
   return (
     <header
       id="home"
-      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-10 flex md:flex-row flex-col justify-center md:gap-20 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12 md:p-8 flex md:flex-row flex-col justify-center md:gap-20 max-container"
     >
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
-          <img
-            src={imageProduct1}
-            alt="sneaker product"
-            width={450}
-            height={400}
-            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-sm  md:z-10 md:w-[450px] md:mb-7 "
-          />
+          <div>
+            <img
+              src={imageProduct1}
+              alt="sneaker product"
+              width={450}
+              height={400}
+              className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md md:z-10 md:w-[450px] md:mb-7 "
+            />
+          </div>
           <div className="sm:block md:hidden absolute right-0 top-1/2">
             <MobileButton>{<NextIcon />}</MobileButton>
           </div>
