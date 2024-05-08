@@ -22,11 +22,9 @@ export const NavBar = () => {
               {navLinks.map((link) => (
                 <li
                   key={link.label}
-                  className="border-b-2 border-b-orange-400 pb-10 cursor-pointer"
+                  className="border-b-2 border-b-orange-400 pb-10"
                 >
-                  <a href={link.href} className="">
-                    {link.label}
-                  </a>
+                  <a href={link.href}>{link.label}</a>
                 </li>
               ))}
             </ul>
@@ -36,7 +34,7 @@ export const NavBar = () => {
               <Cartlink
                 fill="#ced4da"
                 stroke="#ced4da"
-                className="font-normal cursor-pointer"
+                className="font-normal cursor-default"
               />
               <span className="absolute sm:block md:block lg:block grid place-items-center text-center top-[-14px] right-[-12px] w-5 h-5 rounded-full bg-primary-orange text-sm text-White">
                 3
