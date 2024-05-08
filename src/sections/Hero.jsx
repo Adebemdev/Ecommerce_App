@@ -20,7 +20,7 @@ export const Hero = () => {
   return (
     <header
       id="home"
-      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12 md:p-8 flex md:flex-row flex-col justify-center md:gap-20 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12 md:p-20 flex md:flex-row flex-col justify-center md:gap-20 max-container"
     >
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
@@ -99,10 +99,10 @@ export const Hero = () => {
       <div className="sm:hidden md:hidden">
         <MobileMenuNavBar />
       </div>
-      <div>
-        <MobileDesignBasket className="sm:block md:block" />
+      <div className="sm:hidden md:hidden">
+        <MobileDesignBasket />
       </div>
-      <div className="sm:hidden lg:hidden">
+      <div className="sm:block md:block">
         <MobileBasketFilled />
       </div>
     </header>

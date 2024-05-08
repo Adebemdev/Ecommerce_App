@@ -8,7 +8,7 @@ export const NavBar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-10 sm:w-auto sm:p-0 padding-nx md:w-[85%] h-auto m-auto bg-White">
       <div className="relative">
-        <nav className="sm:flex justify-between sm:h-full sm:p-4 md:px-8">
+        <nav className="sm:flex justify-between sm:h-full sm:p-4 md:px-0">
           <div className="flex justify-center items-center gap-16">
             <div className="flex justify-center items-center sm:gap-4">
               <div className="sm:block md:hidden">
@@ -20,10 +20,7 @@ export const NavBar = () => {
             </div>
             <ul className="absolute top-[-6px] left-[250px] flex max-md:hidden gap-4 justify-center items-center font-kumbh text-sm font-normal text-Grayish-blue mt-8">
               {navLinks.map((link) => (
-                <li
-                  key={link.label}
-                  className="border-b-2 border-b-orange-400 pb-10"
-                >
+                <li key={link.label} className="">
                   <a href={link.href}>{link.label}</a>
                 </li>
               ))}
@@ -40,8 +37,8 @@ export const NavBar = () => {
                 3
               </span>
             </div>
-            <div>
-              <img src={imageAvatar} alt="Avatar" className="h-14 w-14" />
+            <div className="border-2 border-orange-500 rounded-full w-14 h-14">
+              <img src={imageAvatar} alt="Avatar" />
             </div>
           </div>
         </nav>
