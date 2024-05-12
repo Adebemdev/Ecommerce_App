@@ -1,7 +1,7 @@
 import React from "react";
 import MobileSeparator from "./MobileSeparator";
 import IconButton from "./IconButton";
-import { imageProduct1 } from "../assets/images";
+import { bigSneaker1 } from "../assets/images";
 import { ReactComponent as DeleteIcon } from "../assets/icons/icon-delete.svg";
 
 const MobileBasketFilled = () => {
@@ -16,7 +16,7 @@ const MobileBasketFilled = () => {
           <div className="flex flex-row justify-center gap-4 p-4">
             <div>
               <img
-                src={imageProduct1}
+                src={bigSneaker1}
                 alt="sneaker product"
                 width={100}
                 height={100}

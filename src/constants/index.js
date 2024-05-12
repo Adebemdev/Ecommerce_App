@@ -3,28 +3,28 @@ import {
   thumbnail2,
   thumbnail3,
   thumbnail4,
-  imageProduct1,
-  imageProduct2,
-  imageProduct3,
-  imageProduct4,
+  bigSneaker1,
+  bigSneaker2,
+  bigSneaker3,
+  bigSneaker4,
 } from "../assets/images";
 
 export const sneakers = [
   {
     thumbnail: thumbnail1,
-    bigshoe: imageProduct1,
+    bigsneaker: bigSneaker1,
   },
   {
     thumbnail: thumbnail2,
-    bigshoe: imageProduct2,
+    bigsneaker: bigSneaker2,
   },
   {
     thumbnail: thumbnail3,
-    bigshoe: imageProduct3,
+    bigsneaker: bigSneaker3,
   },
   {
     thumbnail: thumbnail4,
-    bigshoe: imageProduct4,
+    bigsneaker: bigSneaker4,
   },
 ];
 

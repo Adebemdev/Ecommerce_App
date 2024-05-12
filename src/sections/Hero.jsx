@@ -1,4 +1,4 @@
-import { imageProduct1 } from "../assets/images";
+import { bigSneaker1 } from "../assets/images";
 import { sneakers } from "../constants";
 import { Sneaker } from "../components/Sneaker";
 import IconButton from "../components/IconButton";
@@ -20,17 +20,17 @@ export const Hero = () => {
   return (
     <header
       id="home"
-      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12 md:p-20 flex md:flex-row flex-col justify-center md:gap-20 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12 md:p-0 flex md:flex-row flex-col justify-center md:gap-20 max-container"
     >
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
           <div>
             <img
-              src={imageProduct1}
+              src={bigSneaker1}
               alt="sneaker product"
               width={450}
               height={400}
-              className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md md:z-10 md:w-[450px] md:mb-7 "
+              className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md md:z-10 md:w-[450px] md:mb-0 "
             />
           </div>
           <div className="sm:block md:hidden absolute right-0 top-1/2">
@@ -102,7 +102,7 @@ export const Hero = () => {
       <div className="sm:hidden md:hidden">
         <MobileDesignBasket />
       </div>
-      <div className="sm:block md:block">
+      <div className="sm:hidden md:hidden">
         <MobileBasketFilled />
       </div>
     </header>
