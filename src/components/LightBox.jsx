@@ -23,7 +23,12 @@ export const LightBox = () => {
       prevSneakerIndex === 0 ? sneakers.length - 1 : prevSneakerIndex - 1
     );
   };
-  const currentSneaker = sneakers[currentIndex];
+
+  const handleThumbnailClick = (index) => {
+    setCurrentIndex(index);
+  };
+
+  // const currentSneaker = sneakers[currentIndex];
 
   return (
     <section className="relative">
@@ -54,10 +59,10 @@ export const LightBox = () => {
               />
             </ButtonSneaker>
 
-            {currentSneaker && (
+            {sneakers[currentIndex] && (
               <>
                 <img
-                  src={currentSneaker.bigsneaker}
+                  src={sneakers[currentIndex].bigsneaker}
                   width={400}
                   height={400}
                   alt={`sneaker ${currentIndex + 1}`}
@@ -65,9 +70,13 @@ export const LightBox = () => {
                 />
                 <div className="flex gap-4 p-4">
                   {sneakers.map((sneaker, index) => (
-                    <div className="relative">
+                    <div
+                      className="relative"
+                      key={index}
+                      onClick={() => handleThumbnailClick(index)}
+                    >
                       <div
-                        className={`absolute ${
+                        className={`absolute cursor-grab ${
                           index === currentIndex
                             ? "bg-Grayish-blue top-0 left-0 w-full h-full opacity-50 rounded-md border-solid border-2 border-primary-orange"
                             : ""

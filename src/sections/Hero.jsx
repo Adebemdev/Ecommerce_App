@@ -1,6 +1,4 @@
-import { bigSneaker1 } from "../assets/images";
 import { sneakers } from "../constants";
-import { Sneaker } from "../components/Sneaker";
 import IconButton from "../components/IconButton";
 import AnotherIconButton from "../components/AnotherIconButton";
 import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
@@ -12,11 +10,29 @@ import MobileButton from "../components/MobileButton";
 import MobileMenuNavBar from "../components/MobileMenuNavBar";
 import MobileBasketFilled from "../components/MobileBasketFilled";
 import MobileDesignBasket from "../components/MobileDesignBasket";
+import { useState } from "react";
 
 // import { useState } from "react";
 
 export const Hero = () => {
-  // const [bigShoeImg, setBigShoeImg] = useState(imageProduct1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevSneakerIndex) =>
+      prevSneakerIndex === sneakers.length - 1 ? 0 : prevSneakerIndex + 1
+    );
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevSneakerIndex) =>
+      prevSneakerIndex === 0 ? sneakers.length - 1 : prevSneakerIndex - 1
+    );
+  };
+
+  const handleThumbnailClick = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <header
       id="home"
@@ -24,35 +40,44 @@ export const Hero = () => {
     >
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
-          <div>
-            <img
-              src={bigSneaker1}
-              alt="sneaker product"
-              width={450}
-              height={400}
-              className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md md:z-10 md:w-[450px] md:mb-0 "
-            />
+          <div className="sm:block md:block absolute right-0 top-1/2">
+            <MobileButton>{<NextIcon onClick={handleNext} />}</MobileButton>
           </div>
-          <div className="sm:block md:hidden absolute right-0 top-1/2">
-            <MobileButton>{<NextIcon />}</MobileButton>
+          <div className="sm:block md:block absolute left-[9%] top-1/2">
+            <MobileButton>{<PrevIcon onClick={handlePrevious} />}</MobileButton>
           </div>
-          <div className="sm:block md:hidden absolute left-[9%] top-1/2">
-            <MobileButton>{<PrevIcon />}</MobileButton>
-          </div>
+
+          <img
+            src={sneakers[currentIndex].bigsneaker}
+            alt={`sneaker ${currentIndex + 1}`}
+            width={450}
+            height={400}
+            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md md:z-10 md:w-[450px] md:mb-0 "
+          />
         </div>
-        <div className="sm:hidden md:flex gap-7 w-[450px]">
+        <div className="sm:hidden md:flex gap-5 w-[450px]">
           {sneakers.map((sneaker, index) => (
-            <div className="relative flex-grow" key={sneaker.bigshoe}>
+            <div
+              className="relative flex-grow"
+              key={sneaker.bigshoe}
+              onClick={() => handleThumbnailClick(index)}
+            >
               <div
                 className={`${
-                  index === 0
-                    ? "absolute bg-Grayish-blue w-full h-full opacity-50 rounded-md border-solid border-2 border-primary-orange"
+                  index === currentIndex
+                    ? "absolute bg-Grayish-blue w-full h-full opacity-50 rounded-md cursor-pointer"
+                    : index === 0
+                    ? "border-solid border-2 border-primary-orange opacity-50 absolute rounded-md bg-Grayish-blue w-full h-full"
                     : ""
                 }`}
               ></div>
-              <div>
-                <Sneaker imgURL={sneaker} />
-              </div>
+              <img
+                src={sneaker.thumbnail}
+                alt={`Thumbnail ${index + 1}`}
+                width={100}
+                height={100}
+                className="rounded-md"
+              />
             </div>
           ))}
         </div>
