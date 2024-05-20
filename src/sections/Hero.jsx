@@ -14,7 +14,7 @@ import { useState } from "react";
 
 // import { useState } from "react";
 
-export const Hero = () => {
+export const Hero = ({ count, onDecrease, onIncrease }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -40,7 +40,7 @@ export const Hero = () => {
     >
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
-          <div className="sm:block md:block absolute right-0 top-1/2">
+          <div className="sm:block md:block absolute right-0 top-1/2 cursor-pointer">
             <MobileButton>{<NextIcon onClick={handleNext} />}</MobileButton>
           </div>
           <div className="sm:block md:block absolute left-[9%] top-1/2">
@@ -113,8 +113,13 @@ export const Hero = () => {
         </div>
         {/* sm:flex sm:flex-col lg:flex-row  lg:gap-4 mt-2 */}
         <div className="flex gap-4 w-full sm:flex-col md:flex-row py-4">
-          <AnotherIconButton icons={[<MinusIcon />, <PlusIcon />]}>
-            0
+          <AnotherIconButton
+            icons={[
+              <MinusIcon onClick={onDecrease} />,
+              <PlusIcon onClick={onIncrease} />,
+            ]}
+          >
+            {count}
           </AnotherIconButton>
           <IconButton icon={<CartIcon fill="white" stroke="white" />}>
             Add to cart
