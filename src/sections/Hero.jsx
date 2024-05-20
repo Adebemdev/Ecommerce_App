@@ -14,7 +14,7 @@ import { useState } from "react";
 
 // import { useState } from "react";
 
-export const Hero = ({ count, onDecrease, onIncrease }) => {
+export const Hero = ({ count, onDecrease, onIncrease, isOpen }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -40,10 +40,10 @@ export const Hero = ({ count, onDecrease, onIncrease }) => {
     >
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
         <div className="relative">
-          <div className="sm:block md:block absolute right-0 top-1/2 cursor-pointer">
+          <div className="sm:block md:hidden absolute right-0 top-1/2 cursor-pointer">
             <MobileButton>{<NextIcon onClick={handleNext} />}</MobileButton>
           </div>
-          <div className="sm:block md:block absolute left-[9%] top-1/2">
+          <div className="sm:block md:hidden absolute left-[9%] top-1/2">
             <MobileButton>{<PrevIcon onClick={handlePrevious} />}</MobileButton>
           </div>
 
@@ -59,7 +59,7 @@ export const Hero = ({ count, onDecrease, onIncrease }) => {
           {sneakers.map((sneaker, index) => (
             <div
               className="relative flex-grow"
-              key={sneaker.bigshoe}
+              key={sneaker.id}
               onClick={() => handleThumbnailClick(index)}
             >
               <div
@@ -126,10 +126,8 @@ export const Hero = ({ count, onDecrease, onIncrease }) => {
           </IconButton>
         </div>
       </div>
-      <div className="sm:hidden md:hidden">
-        <MobileMenuNavBar />
-      </div>
-      <div className="sm:hidden md:hidden">
+      <div className="md:hidden">{isOpen && <MobileMenuNavBar />}</div>
+      <div className="md:hidden sm:hidden">
         <MobileDesignBasket />
       </div>
       <div className="sm:hidden md:hidden">

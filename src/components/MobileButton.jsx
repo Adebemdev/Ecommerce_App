@@ -7,7 +7,7 @@ const MobileButton = ({ children, className, ...buttonProps }) => {
       {...buttonProps}
       className={`button ${className} h-10 w-10 bg-white rounded-full transform -translate-y-1/2 -translate-x-1/2 flex items-center justify-center`}
     >
-      <spn>{children}</spn>
+      <span>{children}</span>
     </Button>
   );
 };

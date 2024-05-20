@@ -13,25 +13,29 @@ export const sneakers = [
   {
     thumbnail: thumbnail1,
     bigsneaker: bigSneaker1,
+    id: 1,
   },
   {
     thumbnail: thumbnail2,
     bigsneaker: bigSneaker2,
+    id: 2,
   },
   {
     thumbnail: thumbnail3,
     bigsneaker: bigSneaker3,
+    id: 3,
   },
   {
     thumbnail: thumbnail4,
     bigsneaker: bigSneaker4,
+    id: 4,
   },
 ];
 
 export const navLinks = [
-  { href: "#Collections", label: "Collections" },
-  { href: "#Men", label: "Men" },
-  { href: "#Women", label: "Women" },
-  { href: "#About", label: "About" },
-  { href: "#Contact", label: "Contact" },
+  { href: "#Collections", label: "Collections", id: 1 },
+  { href: "#Men", label: "Men" , id: 2 },
+  { href: "#Women", label: "Women" , id: 3 },
+  { href: "#About", label: "About" , id: 4 },
+  { href: "#Contact", label: "Contact" , id: 5 },
 ];
