@@ -30,9 +30,6 @@ const MobileBasketFilled = () => {
                   $375.00
                 </span>
               </p>
-              {/* <p className="sm:text-[18px] font-kumbh text-Grayish-blue">
-                
-              </p> */}
             </div>
             <div className="flex items-center">
               <DeleteIcon fill="#ced4da" className="w-8 h-8" />

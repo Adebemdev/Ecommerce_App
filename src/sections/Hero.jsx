@@ -8,13 +8,16 @@ import { ReactComponent as NextIcon } from "../assets/icons/icon-next.svg";
 import { ReactComponent as PrevIcon } from "../assets/icons/icon-previous.svg";
 import MobileButton from "../components/MobileButton";
 import MobileMenuNavBar from "../components/MobileMenuNavBar";
-import MobileBasketFilled from "../components/MobileBasketFilled";
-import MobileDesignBasket from "../components/MobileDesignBasket";
+// import MobileBasketFilled from "../components/MobileBasketFilled";
+// import MobileDesignBasket from "../components/MobileDesignBasket";
+import { ReactComponent as DeleteIcon } from "../assets/icons/icon-delete.svg";
+import MobileSeparator from "../components/MobileSeparator";
+import { bigSneaker1 } from "../assets/images";
 import { useState } from "react";
 
 // import { useState } from "react";
 
-export const Hero = ({ count, onDecrease, onIncrease, isOpen }) => {
+export const Hero = ({ count, onDecrease, onIncrease, isOpen, cartOpen }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -36,9 +39,9 @@ export const Hero = ({ count, onDecrease, onIncrease, isOpen }) => {
   return (
     <header
       id="home"
-      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12 md:p-0 flex md:flex-row flex-col justify-center md:gap-20 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12 md:p-0 flex md:flex-row flex-col justify-center md:gap-16 max-container"
     >
-      <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center">
+      <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center mb-10">
         <div className="relative">
           <div className="sm:block md:hidden absolute right-0 top-1/2 cursor-pointer">
             <MobileButton>{<NextIcon onClick={handleNext} />}</MobileButton>
@@ -52,7 +55,7 @@ export const Hero = ({ count, onDecrease, onIncrease, isOpen }) => {
             alt={`sneaker ${currentIndex + 1}`}
             width={450}
             height={400}
-            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md md:z-10 md:w-[450px] md:mb-0 "
+            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md md:z-10 md:w-[450px] md:mb-0"
           />
         </div>
         <div className="sm:hidden md:flex gap-5 w-[450px]">
@@ -127,11 +130,48 @@ export const Hero = ({ count, onDecrease, onIncrease, isOpen }) => {
         </div>
       </div>
       <div className="md:hidden">{isOpen && <MobileMenuNavBar />}</div>
-      <div className="md:hidden sm:hidden">
-        <MobileDesignBasket />
+
+      <div className="">
+        {cartOpen && (
+          <div className="fixed md:inset-y-0  md:top-[-140px] md:right-[240px] z-50 sm:inset-y-0 sm:top-[-360px] right-[208px]">
+            <div className="absolute flex flex-col justify-center sm:top-[50%] sm:left-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] drop-shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white sm:w-[380px] sm:h-[300px] md:w-[400px] md:h-[300px] rounded-md object-contain">
+              <h2 className="absolute font-kumbh font-bold p-6 inset-x-0 top-[5px]">
+                Cart
+              </h2>
+              <MobileSeparator className="absolute inset-x-0 top-[70px]" />
+              <p className="text-center font-kumbh text-xl text-Dark-grayish-blue">
+                Your cart is empty
+              </p>
+            </div>
+          </div>
+        )}
       </div>
-      <div className="sm:hidden md:hidden">
-        <MobileBasketFilled />
+      <div className="sm:block md:block">
+        <div className="fixed md:inset-y-0  md:top-[-140px] md:right-[240px] z-50 sm:inset-y-0 sm:top-[-360px] sm:right-[208px]">
+          <div className="absolute flex flex-col justify-center top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] drop-shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white sm:w-[380px] sm:h-[300px] md:w-[400px] md:h-[300px] rounded-md object-contain">
+            <h2 className="font-kumbh font-bold p-4 absolute inset-x-0 top-[16px]">
+              Cart
+            </h2>
+            <MobileSeparator className="absolute inset-x-0 top-[80px]" />
+            <div className="grid grid-cols-3 mb-[-60px] p-4 gap-5">
+              <div className="w-1/2 overflow-hidden rounded-md object-cover">
+                <img src={bigSneaker1} alt="sneaker product" />
+              </div>
+              <div className="flex col-span-2">
+                <p className=" font-kumbh text-Grayish-blue">
+                  Fall Limited Edition Sneakers $125.00 x 3
+                  <span className="text-[18px] font-bold font-kumbh text-Black">
+                    $375.00
+                  </span>
+                </p>
+                <DeleteIcon fill="#ced4da" className="w-8 h-8" />
+              </div>
+              <div className="col-span-3">
+                <IconButton fullwidth>Checkout</IconButton>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   );

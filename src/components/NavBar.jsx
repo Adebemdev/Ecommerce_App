@@ -5,14 +5,15 @@ import { imageAvatar } from "../assets/images";
 import { Separator } from "./Separator";
 import { useState } from "react";
 
-export const NavBar = ({ count, onOpen }) => {
+export const NavBar = ({ count, onOpen, onCartOpen }) => {
   const [activeLink, setActiveLink] = useState("");
+
   const handleLinkClick = (linkId) => {
     setActiveLink(linkId);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 sm:w-auto sm:p-0 padding-nx md:w-[95%] h-auto m-auto bg-White">
+    <header className="fixed top-0 left-0 right-0 z-10 sm:w-auto sm:p-0  md:w-[90%] h-auto m-auto bg-White">
       <div className="relative">
         <nav className="sm:flex justify-between sm:h-full sm:p-4 md:px-0">
           <div className="flex justify-center items-center gap-16">
@@ -56,7 +57,9 @@ export const NavBar = ({ count, onOpen }) => {
                 fill="#ced4da"
                 stroke="#ced4da"
                 className="font-normal cursor-default"
+                onClick={onCartOpen}
               />
+
               <span className="absolute sm:block md:block lg:block grid place-items-center text-center top-[-14px] right-[-12px] w-5 h-5 rounded-full bg-primary-orange text-sm text-White">
                 {count}
               </span>
