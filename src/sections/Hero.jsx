@@ -1,5 +1,5 @@
 import { sneakers } from "../constants";
-import { products } from "../constants";
+// import { products } from "../constants";
 import IconButton from "../components/IconButton";
 import AnotherIconButton from "../components/AnotherIconButton";
 import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
@@ -12,7 +12,7 @@ import MobileMenuNavBar from "../components/MobileMenuNavBar";
 import { ReactComponent as DeleteIcon } from "../assets/icons/icon-delete.svg";
 import MobileSeparator from "../components/MobileSeparator";
 
-import { useState } from "react";
+// import { useState } from "react";
 
 export const Hero = ({
   count,
@@ -21,67 +21,32 @@ export const Hero = ({
   isOpen,
   cartOpen,
   onOpenLightBox,
+  currentIndex,
+  onNext,
+  onThumbnailClick,
+  onPrevious,
+  cart,
+  onAddToCartItem,
+  onRemoveItem,
+  totalItems,
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [cart, setCart] = useState(products);
+  // const handleIncreaseCart = (id) => {
+  //   setCart((prevCart) =>
+  //     prevCart.map((item) =>
+  //       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+  //     )
+  //   );
+  // };
 
-  const handleNext = () => {
-    setCurrentIndex((prevSneakerIndex) =>
-      prevSneakerIndex === sneakers.length - 1 ? 0 : prevSneakerIndex + 1
-    );
-  };
-
-  const handlePrevious = () => {
-    setCurrentIndex((prevSneakerIndex) =>
-      prevSneakerIndex === 0 ? sneakers.length - 1 : prevSneakerIndex - 1
-    );
-  };
-
-  const handleThumbnailClick = (index) => {
-    setCurrentIndex(index);
-  };
-
-  const handleAddToCart = () => {
-    const existingItemCart = cart.findIndex(
-      (item) => item.id === sneakers[currentIndex].id
-    );
-
-    if (existingItemCart >= 0) {
-      const updatedCart = [...cart];
-      updatedCart[existingItemCart].quantity += count;
-      setCart(updatedCart);
-    } else {
-      setCart([
-        ...cart,
-        {
-          ...sneakers[currentIndex],
-          quantity: count,
-        },
-      ]);
-    }
-  };
-
-  const handleIncreaseCart = (id) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const handleDecreaseCart = (id) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
-  };
-
-  const handleRemoveItem = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-  };
+  // const handleDecreaseCart = (id) => {
+  //   setCart((prevCart) =>
+  //     prevCart.map((item) =>
+  //       item.id === id && item.quantity > 1
+  //         ? { ...item, quantity: item.quantity - 1 }
+  //         : item
+  //     )
+  //   );
+  // };
 
   return (
     <header
@@ -91,10 +56,10 @@ export const Hero = ({
       <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center mb-10">
         <div className="relative">
           <div className="sm:block md:hidden absolute right-0 top-1/2 cursor-pointer">
-            <MobileButton>{<NextIcon onClick={handleNext} />}</MobileButton>
+            <MobileButton>{<NextIcon onClick={onNext} />}</MobileButton>
           </div>
           <div className="sm:block md:hidden absolute left-[9%] top-1/2">
-            <MobileButton>{<PrevIcon onClick={handlePrevious} />}</MobileButton>
+            <MobileButton>{<PrevIcon onClick={onPrevious} />}</MobileButton>
           </div>
 
           <img
@@ -111,7 +76,7 @@ export const Hero = ({
             <div
               className="relative flex-grow"
               key={sneaker.id}
-              onClick={() => handleThumbnailClick(index)}
+              onClick={() => onThumbnailClick(index)}
             >
               <div
                 className={`${
@@ -173,7 +138,7 @@ export const Hero = ({
           </AnotherIconButton>
           <IconButton
             icon={<CartIcon fill="white" stroke="white" />}
-            onClick={handleAddToCart}
+            onClick={() => onAddToCartItem(sneakers[currentIndex])}
           >
             Add to cart
           </IconButton>
@@ -218,7 +183,7 @@ export const Hero = ({
                       <DeleteIcon
                         fill="#ced4da"
                         className="w-8 h-8 p-2"
-                        onClick={() => handleRemoveItem(item.id)}
+                        onClick={() => onRemoveItem(item.id)}
                       />
                     </div>
                     {/* <div className="flex gap-2 mt-4">

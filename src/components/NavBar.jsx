@@ -5,7 +5,7 @@ import { imageAvatar } from "../assets/images";
 import { Separator } from "./Separator";
 import { useState } from "react";
 
-export const NavBar = ({ count, onOpen, onCartOpen }) => {
+export const NavBar = ({ count, onOpen, onCartOpen, totalItems }) => {
   const [activeLink, setActiveLink] = useState("");
 
   const handleLinkClick = (linkId) => {
@@ -59,10 +59,11 @@ export const NavBar = ({ count, onOpen, onCartOpen }) => {
                 className="font-normal cursor-default"
                 onClick={onCartOpen}
               />
-
-              <span className="absolute sm:block md:block lg:block grid place-items-center text-center top-[-14px] right-[-12px] w-5 h-5 rounded-full bg-primary-orange text-sm text-White">
-                {count}
-              </span>
+              {count > 0 && (
+                <span className="absolute sm:block md:block lg:block grid place-items-center text-center top-[-14px] right-[-12px] w-5 h-5 rounded-full bg-primary-orange text-sm text-White">
+                  {count}
+                </span>
+              )}
             </div>
             <div className="border-2 border-orange-500 rounded-full w-14 h-14">
               <img src={imageAvatar} alt="Avatar" />
