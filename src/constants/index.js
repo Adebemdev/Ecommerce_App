@@ -34,8 +34,25 @@ export const sneakers = [
 
 export const navLinks = [
   { href: "#Collections", label: "Collections", id: 1 },
-  { href: "#Men", label: "Men" , id: 2 },
-  { href: "#Women", label: "Women" , id: 3 },
-  { href: "#About", label: "About" , id: 4 },
-  { href: "#Contact", label: "Contact" , id: 5 },
+  { href: "#Men", label: "Men", id: 2 },
+  { href: "#Women", label: "Women", id: 3 },
+  { href: "#About", label: "About", id: 4 },
+  { href: "#Contact", label: "Contact", id: 5 },
+];
+
+export const products = [
+  {
+    bigsneaker: bigSneaker1,
+    name: "Fall Limited Edition Sneakers",
+    quantity: 3,
+    price: 125,
+    id: 1,
+  },
+  {
+    bigsneaker: bigSneaker2,
+    name: "Fall Limited Edition Sneakers",
+    quantity: 3,
+    price: 125,
+    id: 2,
+  },
 ];

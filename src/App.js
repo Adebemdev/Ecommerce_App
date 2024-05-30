@@ -8,6 +8,11 @@ function App() {
   const [count, setCount] = useState(0);
   const [isOpen, setIsOpen] = useState(true);
   const [cartOpen, setCartOpen] = useState(false);
+  const [lightBoxOpen, setLightBoxOpen] = useState(false);
+
+  const handleLightBoxOpen = () => {
+    setLightBoxOpen((lightBoxOpen) => !lightBoxOpen);
+  };
 
   const handleCartOpen = () => {
     setCartOpen((cartOpen) => !cartOpen);
@@ -18,13 +23,10 @@ function App() {
   };
 
   const handleIncrease = () => {
-    setCount(count + 1);
+    setCount((prevCount) => prevCount + 1);
   };
   const handleDecrease = () => {
-    //Preventing count < 0
-    if (count > 0) {
-      setCount(count - 1);
-    }
+    setCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
   };
   return (
     <main className="relative">
@@ -44,11 +46,10 @@ function App() {
           onDecrease={handleDecrease}
           isOpen={isOpen}
           cartOpen={cartOpen}
+          onOpenLightBox={handleLightBoxOpen}
         />
       </section>
-      <section className="absolute">
-        <LightBox />
-      </section>
+      <section className="absolute">{lightBoxOpen && <LightBox />}</section>
     </main>
   );
 }
