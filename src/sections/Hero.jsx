@@ -9,26 +9,24 @@ import { ReactComponent as NextIcon } from "../assets/icons/icon-next.svg";
 import { ReactComponent as PrevIcon } from "../assets/icons/icon-previous.svg";
 import MobileButton from "../components/MobileButton";
 import MobileMenuNavBar from "../components/MobileMenuNavBar";
-import { ReactComponent as DeleteIcon } from "../assets/icons/icon-delete.svg";
-import MobileSeparator from "../components/MobileSeparator";
-
-// import { useState } from "react";
+import Cart from "../components/Cart";
 
 export const Hero = ({
   count,
   onDecrease,
   onIncrease,
   isOpen,
-  cartOpen,
   onOpenLightBox,
   currentIndex,
   onNext,
   onThumbnailClick,
   onPrevious,
-  cart,
   onAddToCartItem,
+  cartOpen,
+  cart,
   onRemoveItem,
   totalItems,
+  products,
 }) => {
   // const handleIncreaseCart = (id) => {
   //   setCart((prevCart) =>
@@ -98,7 +96,6 @@ export const Hero = ({
           ))}
         </div>
       </div>
-
       <div className="sm:pt-0 sm:padding-xn relative md:w-2/5 flex flex-col items-start max-xl:padding-x md:padding-t">
         <p className="sm:uppercase text-xl font-kumbh font-bold text-primary-orange sm:mb-2">
           sneaker company
@@ -138,77 +135,15 @@ export const Hero = ({
           </AnotherIconButton>
           <IconButton
             icon={<CartIcon fill="white" stroke="white" />}
-            onClick={() => onAddToCartItem(sneakers[currentIndex])}
+            onClick={() => onAddToCartItem(products)}
           >
             Add to cart
           </IconButton>
         </div>
       </div>
       <div className="md:hidden">{isOpen && <MobileMenuNavBar />}</div>
-
-      <div className="">
-        <div className="fixed md:inset-y-0  md:top-[-140px] md:right-[240px] z-50 sm:inset-y-0 sm:top-[-360px] right-[208px]">
-          <div className="absolute flex flex-col justify-center sm:top-[50%] sm:left-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] drop-shadow-[0_0px_10px_rgba(0,0,0,0.1)] bg-white sm:w-[380px] sm:h-[300px] md:w-[400px] md:h-[300px] rounded-md object-contain">
-            <h2 className="absolute font-kumbh font-bold p-6 inset-x-0 top-[5px]">
-              Cart
-            </h2>
-            <MobileSeparator className="absolute inset-x-0 top-[70px]" />
-            {cart.length === 0 ? (
-              <p className="text-center font-kumbh text-xl text-Dark-grayish-blue">
-                Your cart is empty
-              </p>
-            ) : (
-              cart.map((item) => (
-                <div key={item.id} className="flex w-[400px] gap-4 px-4">
-                  <div className="w-1/6">
-                    <img
-                      src={item.bigsneaker}
-                      alt={`Big Sneaker ${item.id + 1}`}
-                      className="rounded-md"
-                    />
-                  </div>
-                  <div className="flex-grow mt-2">
-                    <div className="flex gap-2">
-                      <div className="leading-[20px]">
-                        <h5 className="text-Grayish-blue text-[18px] font-kumbh">
-                          {item.name}
-                        </h5>
-                        <p className="text-Grayish-blue font-bold font-kumbh">
-                          ${item.price} x {item.quantity}{" "}
-                          <span className="text-Black text-bold font-kumbh">
-                            ${item.price * item.quantity}
-                          </span>
-                        </p>
-                      </div>
-                      <DeleteIcon
-                        fill="#ced4da"
-                        className="w-8 h-8 p-2"
-                        onClick={() => onRemoveItem(item.id)}
-                      />
-                    </div>
-                    {/* <div className="flex gap-2 mt-4">
-                      <IconButton onClick={() => handleDecreaseCart(item.id)}>
-                        <MinusIcon />
-                      </IconButton>
-                      <span className="flex items-center justify-center w-8 h-8">
-                        {item.quantity}
-                      </span>
-                      <IconButton onClick={() => handleIncreaseCart(item.id)}>
-                        <PlusIcon />
-                      </IconButton>
-                    </div> */}
-                  </div>
-                </div>
-              ))
-            )}
-            {cart.length > 0 && (
-              <div className="absolute inset-x-0 bottom-[5%] p-4">
-                <IconButton fullwidth>Checkout</IconButton>
-              </div>
-            )}
-          </div>
-        </div>
-        )
+      <div>
+        <Cart products={products} onRemoveItem={onRemoveItem} />
       </div>
     </header>
   );

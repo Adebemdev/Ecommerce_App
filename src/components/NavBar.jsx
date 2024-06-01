@@ -5,7 +5,7 @@ import { imageAvatar } from "../assets/images";
 import { Separator } from "./Separator";
 import { useState } from "react";
 
-export const NavBar = ({ count, onOpen, onCartOpen, totalItems }) => {
+export const NavBar = ({ count, onOpen, onCartOpen }) => {
   const [activeLink, setActiveLink] = useState("");
 
   const handleLinkClick = (linkId) => {

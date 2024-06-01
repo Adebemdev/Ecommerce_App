@@ -42,17 +42,17 @@ export const navLinks = [
 
 export const products = [
   {
+    id: 1,
     bigsneaker: bigSneaker1,
     name: "Fall Limited Edition Sneakers",
     quantity: 3,
     price: 125,
-    id: 1,
   },
-  {
-    bigsneaker: bigSneaker2,
-    name: "Fall Limited Edition Sneakers",
-    quantity: 3,
-    price: 125,
-    id: 2,
-  },
+  // {
+  //   id: 2,
+  //   bigsneaker: bigSneaker2,
+  //   name: "Fall Limited Edition Sneakers",
+  //   quantity: 3,
+  //   price: 125,
+  // },
 ];

@@ -1,17 +1,26 @@
 import { Hero } from "./sections";
 import { NavBar } from "./components/NavBar";
 import { LightBox } from "./components/LightBox";
-import { sneakers, products } from "../src/constants";
+import { sneakers } from "../src/constants";
+import { products } from "../src/constants";
 
 import { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [cart, setCart] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
   const [cartOpen, setCartOpen] = useState(false);
   const [lightBoxOpen, setLightBoxOpen] = useState(false);
-  const [cart, setCart] = useState(products);
+
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleAddToCart = (products) => {
+    setCart((prevCart) => ({
+      ...prevCart,
+      [products.id]: products,
+    }));
+  };
 
   const handleNext = () => {
     setCurrentIndex((prevSneakerIndex) =>
@@ -48,28 +57,6 @@ function App() {
     if (count > 1) setCount(count - 1);
   };
 
-  const handleAddToCart = (item) => {
-    const existingItemCart = cart.findIndex(
-      (cartItem) => cartItem.id === item.id
-    );
-    console.log(existingItemCart);
-
-    if (existingItemCart >= 0) {
-      const updatedCart = [...cart];
-      console.log(updatedCart);
-      updatedCart[existingItemCart].quantity += count;
-      setCart(updatedCart);
-    } else {
-      setCart([
-        ...cart,
-        {
-          ...sneakers[currentIndex],
-          quantity: count,
-        },
-      ]);
-    }
-  };
-
   const handleRemoveItem = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
     setCount(count - 1);
@@ -89,13 +76,12 @@ function App() {
           onDecrease={handleDecrease}
           onOpen={handleOpen}
           onCartOpen={handleCartOpen}
-          cart={cart}
         />
       </section>
       <section className="sm:p-0 lg:padding-l lg:padding-l wide:padding-r padding-b h-[80vh]">
         <Hero
           count={count}
-          cart={cart}
+          products={products}
           onIncrease={handleIncrease}
           onDecrease={handleDecrease}
           isOpen={isOpen}
@@ -105,6 +91,7 @@ function App() {
           onNext={handleNext}
           onPrevious={handlePrevious}
           onThumbnailClick={handleThumbnailClick}
+          cart={cart}
           onAddToCartItem={handleAddToCart}
           onRemoveItem={handleRemoveItem}
         />
