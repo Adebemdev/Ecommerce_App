@@ -2,10 +2,18 @@ import { navLinks } from "../constants";
 import { ReactComponent as Cartlink } from "../assets/icons/icon-cart.svg";
 import { ReactComponent as MenuLink } from "../assets/icons/icon-menu.svg";
 import { imageAvatar } from "../assets/images";
-import { Separator } from "./Separator";
+import Logo from "../assets/icons/logo.svg";
 import { useState } from "react";
+import Cart from "../components/Cart";
 
-export const NavBar = ({ count, onOpen, onCartOpen }) => {
+export const NavBar = ({
+  count,
+  onOpen,
+  onCartOpen,
+  onRemoveItem,
+  products,
+  cartOpen,
+}) => {
   const [activeLink, setActiveLink] = useState("");
 
   const handleLinkClick = (linkId) => {
@@ -13,17 +21,15 @@ export const NavBar = ({ count, onOpen, onCartOpen }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 sm:w-auto sm:p-0  md:w-[90%] h-auto m-auto bg-White">
+    <header className="fixed top-0 left-0 right-0 z-10 md:p-3 md:border-b-[1.5px] md: border-slate-400 max-w-5xl mx-auto bg-White">
       <div className="relative">
         <nav className="sm:flex justify-between sm:h-full sm:p-4 md:px-0">
           <div className="flex justify-center items-center gap-16">
             <div className="flex justify-center items-center sm:gap-4">
               <div className="md:hidden">
-                <MenuLink onClick={onOpen} />
+                <MenuLink onClick={onOpen} className="cursor-pointer" />
               </div>
-              <h1 className="sm:text-2xl md:text-[40px] sm:lowercase tracking-tighter text-Very-dark-blue font-kumbh font-bold">
-                Sneakers
-              </h1>
+              <img src={Logo} alt="" />
             </div>
             <ul className="absolute top-[-6px] left-[250px] flex max-md:hidden gap-4 justify-center items-center font-kumbh text-sm font-normal text-Grayish-blue mt-8">
               {navLinks.map((link) => (
@@ -42,7 +48,7 @@ export const NavBar = ({ count, onOpen, onCartOpen }) => {
                     <span
                       className={`${
                         activeLink === link.id
-                          ? "absolute inset-x-0 bottom-[-40px] h-1 text-center bg-primary-orange"
+                          ? "absolute inset-x-0 bottom-[-28px] h-1 text-center bg-primary-orange"
                           : ""
                       }`}
                     />
@@ -56,7 +62,7 @@ export const NavBar = ({ count, onOpen, onCartOpen }) => {
               <Cartlink
                 fill="#ced4da"
                 stroke="#ced4da"
-                className="font-normal cursor-default"
+                className="font-normal cursor-pointer"
                 onClick={onCartOpen}
               />
               {count > 0 && (
@@ -64,15 +70,21 @@ export const NavBar = ({ count, onOpen, onCartOpen }) => {
                   {count}
                 </span>
               )}
+              <div>
+                {cartOpen && (
+                  <Cart products={products} onRemoveItem={onRemoveItem} />
+                )}
+              </div>
             </div>
-            <div className="border-2 border-orange-500 rounded-full w-14 h-14">
+
+            <div
+              className="border-2 border-orange-500 rounded-full w-8 h-8 cursor-pointer"
+              onClick={onCartOpen}
+            >
               <img src={imageAvatar} alt="Avatar" />
             </div>
           </div>
         </nav>
-        <div className="sm:hidden md:block">
-          <Separator />
-        </div>
       </div>
     </header>
   );

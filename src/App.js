@@ -15,11 +15,22 @@ function App() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleAddToCart = (products) => {
-    setCart((prevCart) => ({
-      ...prevCart,
-      [products.id]: products,
-    }));
+  const handleAddToCart = (product) => {
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        prevCart.map((item) =>
+          item.id === product.id
+            ? {
+                ...item,
+                quantity: item.quantity + product.quantity,
+              }
+            : item
+        );
+      } else {
+        return [...prevCart, product];
+      }
+    });
   };
 
   const handleNext = () => {
@@ -59,13 +70,8 @@ function App() {
 
   const handleRemoveItem = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-    setCount(count - 1);
+    if (count > 1) setCount(count - 1);
   };
-
-  // const totalCartInItems = cart.reduce(
-  //   (total, item) => total + item.quantity,
-  //   0
-  // );
 
   return (
     <main className="relative">
@@ -76,12 +82,14 @@ function App() {
           onDecrease={handleDecrease}
           onOpen={handleOpen}
           onCartOpen={handleCartOpen}
+          products={products}
+          cartOpen={cartOpen}
+          onRemoveItem={handleRemoveItem}
         />
       </section>
       <section className="sm:p-0 lg:padding-l lg:padding-l wide:padding-r padding-b h-[80vh]">
         <Hero
           count={count}
-          products={products}
           onIncrease={handleIncrease}
           onDecrease={handleDecrease}
           isOpen={isOpen}
@@ -93,7 +101,6 @@ function App() {
           onThumbnailClick={handleThumbnailClick}
           cart={cart}
           onAddToCartItem={handleAddToCart}
-          onRemoveItem={handleRemoveItem}
         />
       </section>
       <section className="absolute">{lightBoxOpen && <LightBox />}</section>

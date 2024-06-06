@@ -1,14 +1,11 @@
 import React from "react";
 import { ReactComponent as DeleteIcon } from "../assets/icons/icon-delete.svg";
 import IconButton from "./IconButton";
-//   <p className="text-center font-kumbh text-xl text-Dark-grayish-blue">
-//     Your cart is empty
-//   </p>
 
 const Product = ({ product, onRemoveItem }) => {
   return (
     <div>
-      <div key={product.id} className="flex w-[400px] gap-4 px-4">
+      <div key={product.id} className="flex w-[380px] gap-4 px-4">
         <div className="w-1/6">
           <img
             src={product.bigsneaker}
@@ -20,7 +17,7 @@ const Product = ({ product, onRemoveItem }) => {
           <div className="flex gap-2">
             <div className="leading-[20px]">
               <h5 className="text-Grayish-blue text-[18px] font-kumbh">
-                {product.name}
+                {`${product.name.substring(0, 23)}...`}
               </h5>
               <p className="text-Grayish-blue font-bold font-kumbh">
                 ${product.price} x {product.quantity}{" "}
@@ -31,7 +28,7 @@ const Product = ({ product, onRemoveItem }) => {
             </div>
             <DeleteIcon
               fill="#ced4da"
-              className="w-8 h-8 p-2"
+              className="w-6 h-6"
               onClick={() => onRemoveItem(product.id)}
             />
           </div>

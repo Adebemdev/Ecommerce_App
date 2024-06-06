@@ -5,11 +5,9 @@ import AnotherIconButton from "../components/AnotherIconButton";
 import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
 import { ReactComponent as MinusIcon } from "../assets/icons/icon-minus.svg";
 import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
-import { ReactComponent as NextIcon } from "../assets/icons/icon-next.svg";
-import { ReactComponent as PrevIcon } from "../assets/icons/icon-previous.svg";
-import MobileButton from "../components/MobileButton";
+import RightIcon from "../assets/icons/icon-next.svg";
+import LeftIcon from "../assets/icons/icon-previous.svg";
 import MobileMenuNavBar from "../components/MobileMenuNavBar";
-import Cart from "../components/Cart";
 
 export const Hero = ({
   count,
@@ -24,50 +22,43 @@ export const Hero = ({
   onAddToCartItem,
   cartOpen,
   cart,
-  onRemoveItem,
   totalItems,
-  products,
 }) => {
-  // const handleIncreaseCart = (id) => {
-  //   setCart((prevCart) =>
-  //     prevCart.map((item) =>
-  //       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-  //     )
-  //   );
-  // };
-
-  // const handleDecreaseCart = (id) => {
-  //   setCart((prevCart) =>
-  //     prevCart.map((item) =>
-  //       item.id === id && item.quantity > 1
-  //         ? { ...item, quantity: item.quantity - 1 }
-  //         : item
-  //     )
-  //   );
-  // };
-
   return (
     <header
       id="home"
-      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12 md:p-0 flex md:flex-row flex-col justify-center md:gap-16 max-container"
+      className="relative sm:pt-0 sm:gap-5 sm:h-auto w-full h-full md:pt-12  max-w-6xl mx-auto flex md:flex-row flex-col justify-center md:gap-16 max-container"
     >
-      <div className="top-0 right-0 sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center mb-10">
+      <div className="sm:flex sm:flex-row md:flex-col gap-4 items-center justify-center mb-10">
         <div className="relative">
-          <div className="sm:block md:hidden absolute right-0 top-1/2 cursor-pointer">
-            <MobileButton>{<NextIcon onClick={onNext} />}</MobileButton>
-          </div>
-          <div className="sm:block md:hidden absolute left-[9%] top-1/2">
-            <MobileButton>{<PrevIcon onClick={onPrevious} />}</MobileButton>
-          </div>
-
           <img
             src={sneakers[currentIndex].bigsneaker}
             alt={`sneaker ${currentIndex + 1}`}
-            width={450}
-            height={400}
+            width={300}
+            height={200}
             onClick={onOpenLightBox}
-            className="sm:object-contain sm:h-full sm:w-full sm:overflow-hidden sm:rounded-none md:rounded-md md:z-10 md:w-[450px] md:mb-0"
+            className="sm:object-contain sm:w-full  sm:rounded-none md:rounded-md md:w-[450px]"
           />
+          <ul>
+            <li>
+              <button
+                className="sm:block md:hidden bg-white shadow absolute h-12 w-12 top-1/2 left-4 p-4 rounded-full sm:-translate-y-1/2"
+                onClick={onPrevious}
+              >
+                <img src={LeftIcon} alt="" />
+              </button>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <button
+                className="sm:block md:hidden bg-white shadow absolute top-1/2  right-4 h-12 w-12  p-4 rounded-full -translate-y-1/2"
+                onClick={onNext}
+              >
+                <img src={RightIcon} alt="" />
+              </button>
+            </li>
+          </ul>
         </div>
         <div className="sm:hidden md:flex gap-5 w-[450px]">
           {sneakers.map((sneaker, index) => (
@@ -97,7 +88,7 @@ export const Hero = ({
         </div>
       </div>
       <div className="sm:pt-0 sm:padding-xn relative md:w-2/5 flex flex-col items-start max-xl:padding-x md:padding-t">
-        <p className="sm:uppercase text-xl font-kumbh font-bold text-primary-orange sm:mb-2">
+        <p className="sm:uppercase text-xl font-kumbh font-bold text-primary-orange sm:mb-2 bg-Light-grayish-blue p-2">
           sneaker company
         </p>
         <h1 className="sm:text-[30px] sm:leading-[40px] sm:font-kumbh md:text-4xl max-sm:leading-[20px] font-bold text-Very-dark-blue mb-4">
@@ -135,16 +126,21 @@ export const Hero = ({
           </AnotherIconButton>
           <IconButton
             icon={<CartIcon fill="white" stroke="white" />}
-            onClick={() => onAddToCartItem(products)}
+            onClick={() =>
+              onAddToCartItem({
+                id: sneakers[currentIndex].id,
+                name: sneakers[currentIndex].name,
+                price: 125.0,
+                quantity: count,
+                bigsneaker: sneakers[currentIndex].bigsneaker,
+              })
+            }
           >
             Add to cart
           </IconButton>
         </div>
       </div>
       <div className="md:hidden">{isOpen && <MobileMenuNavBar />}</div>
-      <div>
-        <Cart products={products} onRemoveItem={onRemoveItem} />
-      </div>
     </header>
   );
 };
