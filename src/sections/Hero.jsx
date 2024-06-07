@@ -19,10 +19,8 @@ export const Hero = ({
   onNext,
   onThumbnailClick,
   onPrevious,
-  onAddToCartItem,
   cartOpen,
-  cart,
-  totalItems,
+  addOnToCart,
 }) => {
   return (
     <header
@@ -126,15 +124,7 @@ export const Hero = ({
           </AnotherIconButton>
           <IconButton
             icon={<CartIcon fill="white" stroke="white" />}
-            onClick={() =>
-              onAddToCartItem({
-                id: sneakers[currentIndex].id,
-                name: sneakers[currentIndex].name,
-                price: 125.0,
-                quantity: count,
-                bigsneaker: sneakers[currentIndex].bigsneaker,
-              })
-            }
+            addOnToCart={addOnToCart}
           >
             Add to cart
           </IconButton>

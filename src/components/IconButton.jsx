@@ -6,6 +6,7 @@ const IconButton = ({
   icon,
   className,
   fullwidth,
+  addOnToCart,
   ...buttonProps
 }) => {
   return (

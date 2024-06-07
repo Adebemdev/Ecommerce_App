@@ -40,19 +40,12 @@ export const navLinks = [
   { href: "#Contact", label: "Contact", id: 5 },
 ];
 
-export const products = [
-  {
-    id: 1,
-    bigsneaker: bigSneaker1,
-    name: "Fall Limited Edition Sneakers",
-    quantity: 3,
-    price: 125,
-  },
-  // {
-  //   id: 2,
-  //   bigsneaker: bigSneaker2,
-  //   name: "Fall Limited Edition Sneakers",
-  //   quantity: 3,
-  //   price: 125,
-  // },
-];
+// export const products = [
+//  {
+//     id: 2,
+//     bigsneaker: bigSneaker2,
+//     name: "Fall Limited Edition Sneakers",
+//     quantity: 3,
+//     price: 125,
+//   },
+// ];

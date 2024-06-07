@@ -4,16 +4,8 @@ import { ReactComponent as MenuLink } from "../assets/icons/icon-menu.svg";
 import { imageAvatar } from "../assets/images";
 import Logo from "../assets/icons/logo.svg";
 import { useState } from "react";
-import Cart from "../components/Cart";
 
-export const NavBar = ({
-  count,
-  onOpen,
-  onCartOpen,
-  onRemoveItem,
-  products,
-  cartOpen,
-}) => {
+export const NavBar = ({ count, onOpen, onCartOpen }) => {
   const [activeLink, setActiveLink] = useState("");
 
   const handleLinkClick = (linkId) => {
@@ -70,11 +62,6 @@ export const NavBar = ({
                   {count}
                 </span>
               )}
-              <div>
-                {cartOpen && (
-                  <Cart products={products} onRemoveItem={onRemoveItem} />
-                )}
-              </div>
             </div>
 
             <div
