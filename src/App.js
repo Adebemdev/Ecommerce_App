@@ -2,18 +2,43 @@ import { Hero } from "./sections";
 import { NavBar } from "./components/NavBar";
 import { LightBox } from "./components/LightBox";
 import { sneakers } from "../src/constants";
-// import { products } from "../src/constants";
 
 import { useState } from "react";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [cart, setCart] = useState([]);
+  const [cartItem, setCartItem] = useState([]);
   const [isOpen, setIsOpen] = useState(true);
   const [cartOpen, setCartOpen] = useState(false);
   const [lightBoxOpen, setLightBoxOpen] = useState(false);
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleAddToCart = (product) => {
+    const productExist = cartItem.find((item) => item.id === product.id);
+    console.log(productExist);
+
+    if (productExist) {
+      setCartItem(
+        cartItem.map((item) =>
+          item.id === product.id
+            ? {
+                ...productExist,
+                quantity: productExist.quantity + 1,
+              }
+            : item
+        )
+      );
+    } else {
+      setCartItem([
+        ...cartItem,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ]);
+    }
+  };
 
   const handleNext = () => {
     setCurrentIndex((prevSneakerIndex) =>
@@ -51,11 +76,9 @@ function App() {
   };
 
   const handleRemoveItem = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    setCartItem((prevCart) => prevCart.filter((item) => item.id !== id));
     if (count > 1) setCount(count - 1);
   };
-
-  console.log(localStorage);
 
   return (
     <main className="relative">
@@ -68,7 +91,7 @@ function App() {
           onCartOpen={handleCartOpen}
           cartOpen={cartOpen}
           onRemoveItem={handleRemoveItem}
-          cart={cart}
+          cartItem={cartItem}
         />
       </section>
       <section className="sm:p-0 lg:padding-l lg:padding-l wide:padding-r padding-b h-[80vh]">
@@ -83,6 +106,7 @@ function App() {
           onNext={handleNext}
           onPrevious={handlePrevious}
           onThumbnailClick={handleThumbnailClick}
+          onAddToCart={handleAddToCart}
         />
       </section>
       <section className="absolute">{lightBoxOpen && <LightBox />}</section>

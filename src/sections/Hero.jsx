@@ -1,13 +1,15 @@
 import { sneakers } from "../constants";
-// import { products } from "../constants";
-import IconButton from "../components/IconButton";
-import AnotherIconButton from "../components/AnotherIconButton";
-import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
-import { ReactComponent as MinusIcon } from "../assets/icons/icon-minus.svg";
-import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
+// import IconButton from "../components/IconButton";
+// import AnotherIconButton from "../components/AnotherIconButton";
+// import { ReactComponent as CartIcon } from "../assets/icons/icon-cart.svg";
+// import { ReactComponent as MinusIcon } from "../assets/icons/icon-minus.svg";
+// import { ReactComponent as PlusIcon } from "../assets/icons/icon-plus.svg";
 import RightIcon from "../assets/icons/icon-next.svg";
+import Minus from "../assets/icons/icon-minus.svg";
+import Plus from "../assets/icons/icon-plus.svg";
 import LeftIcon from "../assets/icons/icon-previous.svg";
 import MobileMenuNavBar from "../components/MobileMenuNavBar";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export const Hero = ({
   count,
@@ -20,7 +22,7 @@ export const Hero = ({
   onThumbnailClick,
   onPrevious,
   cartOpen,
-  addOnToCart,
+  onAddToCart,
 }) => {
   return (
     <header
@@ -113,21 +115,22 @@ export const Hero = ({
             </p>
           </div>
         </div>
-        <div className="flex gap-4 w-full sm:flex-col md:flex-row py-4">
-          <AnotherIconButton
-            icons={[
-              <MinusIcon onClick={onDecrease} />,
-              <PlusIcon onClick={onIncrease} />,
-            ]}
-          >
-            {count}
-          </AnotherIconButton>
-          <IconButton
-            icon={<CartIcon fill="white" stroke="white" />}
-            addOnToCart={addOnToCart}
-          >
-            Add to cart
-          </IconButton>
+        <div className="md:flex items-center justify-between gap-2">
+          <ul className="flex items-center justify-between w-[100px] bg-slate-100 rounded shadow md:flex-1 gap-4 px-2 py-4">
+            <li className="cursor-pointer">
+              <img src={Minus} alt="" />
+            </li>
+            <li>{count}</li>
+            <li className="cursor-pointer">
+              <img src={Plus} alt="" />
+            </li>
+          </ul>
+
+          <div className="">
+            <button className="flex items-center justify-center gap-4 bg-orange-500 py-4 px-4 text-white font-bold rounded-lg shadow mt-5 w-full md:mt-0 hover:bg-orange-600 transition-all duration-200">
+              <AiOutlineShoppingCart className="w-6 h-6" /> Add to cart
+            </button>
+          </div>
         </div>
       </div>
       <div className="md:hidden">{isOpen && <MobileMenuNavBar />}</div>
