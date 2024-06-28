@@ -4,15 +4,16 @@ module.exports = {
 
   theme: {
     fontSize: {
-      xs: ["12px", "16px"],
-      sm: ["14px", "20px"],
-      base: ["16px", "19.5px"],
-      lg: ["18px", "21.94px"],
-      xl: ["20px", "24.38px"],
-      "2xl": ["24px", "29.26px"],
-      "3xl": ["28px", "50px"],
-      "4xl": ["48px", "58px"],
-      "8xl": ["96px", "106px"],
+      xs: "0.75rem",
+      sm: "0.875rem",
+      base: "1rem",
+      lg: "1.125rem",
+      xl: "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem",
+      "5xl": "3rem",
+      "6xl": "4rem",
     },
     extend: {
       fontFamily: {
@@ -35,14 +36,13 @@ module.exports = {
         // Black (with 75% opacity for lightbox background): "hsl(0, 0%, 0%)",
       },
       boxShadow: {
-        "2xl": "0px 0px 0px 5px primary-orange inset",
+        "custom": "0px 0px 0px 5px primary-orange inset",
         "3xl": "0 10px 10px -6px rgba(255, 150, 0, 0.9)",
       },
 
       screens: {
-        sm: "400px",
-        md: "800px",
-        lg: "1440px",
+        mobile: "375px",
+        desktop: "1440px",
       },
     },
   },
