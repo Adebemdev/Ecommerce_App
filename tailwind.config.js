@@ -3,6 +3,22 @@ module.exports = {
   content: ["./public/index.html", "./src/**/*.{js,jsx,ts,tsx}"],
 
   theme: {
+    screens: {
+      sm: "640px",
+      // => @media (min-width: 640px) { ... }
+
+      md: "768px",
+      // => @media (min-width: 768px) { ... }
+
+      lg: "1024px",
+      // => @media (min-width: 1024px) { ... }
+
+      xl: "1280px",
+      // => @media (min-width: 1280px) { ... }
+
+      "2xl": "1536px",
+      // => @media (min-width: 1536px) { ... }
+    },
     fontSize: {
       xs: "0.75rem",
       sm: "0.875rem",
@@ -36,13 +52,8 @@ module.exports = {
         // Black (with 75% opacity for lightbox background): "hsl(0, 0%, 0%)",
       },
       boxShadow: {
-        "custom": "0px 0px 0px 5px primary-orange inset",
+        custom: "0px 0px 0px 5px primary-orange inset",
         "3xl": "0 10px 10px -6px rgba(255, 150, 0, 0.9)",
-      },
-
-      screens: {
-        mobile: "375px",
-        desktop: "1440px",
       },
     },
   },
