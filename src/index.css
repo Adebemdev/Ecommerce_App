@@ -38,10 +38,18 @@
   .link-lg-none {
     @apply absolute inset-x-0 top-0;
   }
+
+  .mobile-nav {
+    @apply bg-black w-screen h-screen bg-opacity-75 link-lg-none lg:bg-transparent lg:w-auto lg:h-auto lg:bg-opacity-0;
+  }
+
+  .mobile-ul {
+    @apply flex absolute w-[60%] h-screen top-0 inset-x-0 bg-White items-start flex-col;
+  }
 }
 
 @layer utilities {
-  .overlay {
+  /* .overlay {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,12 +69,67 @@
     width: 100%;
     height: 100%;
     background: hsl(220, 14%, 75%);
-  }
+  } */
 
   .link-none {
     position: none;
     left: 0;
     right: 0;
     top: 0;
+  }
+}
+
+/* bg-black w-screen h-screen bg-opacity-75 link-lg-none lg:bg-transparent lg:w-auto lg:h-auto lg:bg-opacity-0 */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 70%;
+  height: 100%;
+  z-index: 99;
+  transition: all 0.3s ease-in-out;
+}
+
+nav.open {
+  top: 0;
+  left: 0;
+  background-color: white;
+  @apply shadow-2xl p-8 lg:shadow-none lg:p-0;
+}
+
+nav ul {
+  padding-top: 60px;
+  @apply flex items-start flex-col gap-4 lg:flex-row;
+}
+
+nav ul li {
+  @apply font-bold text-lg cursor-pointer lg:font-normal lg:text-base;
+}
+
+.close {
+  @apply absolute top-8 left-8;
+  z-index: 999;
+}
+
+@media (min-width: 1024px) {
+  .big-image {
+    height: 900px;
+  }
+
+  nav {
+    position: relative;
+    left: 0;
+    width: auto;
+    height: auto;
+    z-index: auto;
+  }
+
+  nav.open {
+    background-color: transparent;
+  }
+
+  nav ul {
+    padding-top: 0;
   }
 }

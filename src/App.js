@@ -12,8 +12,6 @@ import plusIcon from "./assets/icons/icon-plus.svg";
 import minusIcon from "./assets/icons/icon-minus.svg";
 import avatarImg from "./image-avatar.png";
 import { sneakers } from "./constants";
-// import closeIcon from "./assets/icons/icon-close.svg";
-// import { imageProduct1 } from "./assets/images";
 
 const App = () => {
   const [quantity, setQuantity] = useState(0);
@@ -138,6 +136,7 @@ const App = () => {
 
 const NavBar = ({ quantity, onCartOpen, cart }) => {
   const [activeLink, setActiveLink] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLinkClick = (event, id) => {
     event.preventDefault();
@@ -151,15 +150,31 @@ const NavBar = ({ quantity, onCartOpen, cart }) => {
     { href: "#About", label: "About", id: 4 },
     { href: "#Contact", label: "Contact", id: 5 },
   ];
-
   return (
-    <nav className="w-screen top-0 h-[90px] z-10 border-none fixed drop-shadow-lg lg:border-2 lg:border-[#adb5bd]">
-      <div className="flex justify-between items-center bg-White w-full h-full px-8 relative">
-        <MenuIcon className="block md:hidden" />
-        <LogoIcon />
-        <div className="bg-black w-screen h-screen bg-opacity-75 link-lg-none lg:bg-transparent lg:w-auto lg:h-auto lg:bg-opacity-0">
-          <ul className="flex absolute w-1/2 h-screen top-0 bg-White items-start flex-col lg:flex-row lg:relative lg:w-auto lg:h-auto lg:top-[-4px]  lg:bg-transparent lg:items-center lg:flex-none lg:inset-x-auto lg:justify-center">
-            <CloseIcon fill="#adb5bd" className="lg:hidden m-4 inset-0" />
+    <header className="relative flex items-center justify-between p-4 border-b border-slate-400 max-w-7xl mx-auto">
+      <div className="flex items-center justify-start gap-4">
+        <ul className="flex items-center justify-start gap-4">
+          {!isOpen && (
+            <li>
+              <MenuIcon className="lg:hidden" onClick={() => setIsOpen(true)} />
+            </li>
+          )}
+          {isOpen && (
+            <li>
+              <CloseIcon
+                fill="#adb5bd"
+                className="lg:hidden close"
+                onClick={() => setIsOpen(false)}
+              />
+            </li>
+          )}
+          <li>
+            <LogoIcon />
+          </li>
+        </ul>
+
+        <nav className={isOpen ? "open" : null}>
+          <ul className="flex">
             {navLinks.map((link) => (
               <li
                 key={link.id}
@@ -168,7 +183,7 @@ const NavBar = ({ quantity, onCartOpen, cart }) => {
               >
                 <a
                   href={link.href}
-                  className={`text-black text-sm font-kumbh font-bold hover:text-Very-dark-blue lg:text-[#adb5bd] relative pb-[36px] ${
+                  className={`text-black text-sm font-kumbh font-bold hover:text-Very-dark-blue lg:text-[#adb5bd] relative pb-[45px] ${
                     activeLink === link.id
                       ? "hover:text-black lg:hover:text-[#adb5bd]"
                       : "hover:text-Very-dark-blue lg:hover:text-[#868e96]"
@@ -182,10 +197,12 @@ const NavBar = ({ quantity, onCartOpen, cart }) => {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="flex items-center justify-center gap-8">
-          <div className="relative">
-            <CartIcon fill="#868e96" onClick={onCartOpen} />
+        </nav>
+      </div>
+      <div>
+        <ul className="flex items-center justify-start gap-4">
+          <li className="relative">
+            <CartIcon fill="#adb5bd" onClick={onCartOpen} />
             {cart.length > 0 ? (
               <span className="absolute inset-x-2 right-6 top-[-16px] p-3 text-White text-sm font-kumbh font-normal bg-primary-orange w-6 h-6 flex justify-center items-center rounded-full">
                 {quantity}
@@ -193,21 +210,23 @@ const NavBar = ({ quantity, onCartOpen, cart }) => {
             ) : (
               ""
             )}
-          </div>
-          <img
-            src={avatarImg}
-            alt="avatar"
-            className="w-10 h-10 border-2 rounded-full border-primary-orange"
-          />
-        </div>
+          </li>
+          <li>
+            <img
+              src={avatarImg}
+              alt="avatar"
+              className="w-10 h-10 border-2 rounded-full border-primary-orange"
+            />
+          </li>
+        </ul>
       </div>
-    </nav>
+    </header>
   );
 };
 
 const Cart = ({ cart, setQuantity, onRemoveCart }) => {
   return (
-    <div className="bg-White h-[400px] w-[460px] inset-x-0 shadow-2xl overflow-auto rounded-xl absolute top-[100px] z-10 mx-auto lg:inset-y-20 lg:right-[-900px]">
+    <div className="bg-White h-[350px] w-[400px] inset-x-0 shadow-2xl overflow-auto rounded-xl absolute top-[80px] z-10 mx-auto lg:inset-y-20 lg:right-[-900px]">
       <div>
         <h1 className="font-bold text-xl font-kumb border-b border-Light-Grayish-blue p-6 ">
           Cart
@@ -274,11 +293,8 @@ const Hero = ({
   onAddToCart,
 }) => {
   return (
-    // <div className="w-full h-[100dvh] py-16 px-4 bg-black">
-    // grid grid-template-rows-[1fr auto] py-16 px-4 w-screen md:grid-cols-2 mx-auto bg-red-500
-    // grid mx-auto pt-12 p-16 grid-cols-1 gap-y-0 lg:container lg:pt-40 lg:grid-cols-2 lg:items-center lg:gap-x-0
-    <section className="mb-16 z-0 py-8">
-      <div className="pt-10  lg:grid lg:mx-auto  lg:p-16 lg:grid-cols-2 lg:gap-y-0 lg:container lg:pt-40 lg:items-center lg:gap-x-0">
+    <section className="mb-16 z-0">
+      <div className="lg:grid lg:mx-auto  lg:p-16 lg:grid-cols-2 lg:gap-y-0 lg:container  lg:items-center lg:gap-x-0">
         <div className="lg:mx-auto flex gap-6 flex-col">
           <div className="relative">
             <img
@@ -339,23 +355,20 @@ const Hero = ({
               withstand everything the weather can offer.
             </p>
 
-            <div className="flex flex-row gap-4 mb-6 lg:flex lg:flex-col lg:justify-between">
-              <div className="flex items-center gap-4">
-                <p className="text-3xl font-bold font-kumbh text-Very-dark-blue">
-                  $125.00
-                </p>
-                <p className="bg-primary-pale-orange py-[2px] px-[6px] rounded-md text-sm font-bold font-kumbh text-primary-orange">
+            <div className="flex flex-wrap items-center justify-between lg:flex-col lg:items-start lg:gap-2">
+              <ul className="flex items-center gap-5">
+                <li className="text-slate-900 font-bold text-2xl">$125.00</li>
+                <li className="bg-orange-100 py-1 px-2 text-orange-400 tracking-wide text-sm font-bold inline-block rounded shadow">
                   50%
-                </p>
-              </div>
-              <div className="mr-[-40px] lg:mr-0">
-                <p className="text-[16px] font-kumbh font-bold text-gray-400 line-through">
-                  $250.00
-                </p>
-              </div>
+                </li>
+              </ul>
+
+              <p className="text-slate-600 text-sm font-kumbh font-bold">
+                <s>$250.00</s>
+              </p>
             </div>
 
-            <div className="flex gap-4 flex-col lg:flex-row">
+            <div className="flex gap-4 mt-4 flex-col lg:flex-row">
               <div className="bg-Light-grayish-blue p-4 w-full lg:w-1/3 rounded-lg flex items-center justify-between">
                 <button
                   className="flex items-center justify-center transition-transform transform hover:scale-110 duration-200"
