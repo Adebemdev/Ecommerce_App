@@ -16,7 +16,7 @@ import { sneakers } from "./constants";
 // import { imageProduct1 } from "./assets/images";
 
 const App = () => {
-  const [quantity, setQuantity] = useState(null);
+  const [quantity, setQuantity] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -153,29 +153,30 @@ const NavBar = ({ quantity, onCartOpen, cart }) => {
   ];
 
   return (
-    <nav className="w-screen top-0 h-[90px] z-10 fixed drop-shadow-lg">
-      <div className="flex justify-between items-center bg-White w-full h-full px-8">
-        <div className="flex items-center gap-4">
-          <MenuIcon className="block md:hidden" />
-          <LogoIcon />
-          <ul className="hidden md:flex">
+    <nav className="w-screen top-0 h-[90px] z-10 border-none fixed drop-shadow-lg lg:border-2 lg:border-[#adb5bd]">
+      <div className="flex justify-between items-center bg-White w-full h-full px-8 relative">
+        <MenuIcon className="block md:hidden" />
+        <LogoIcon />
+        <div className="bg-black w-screen h-screen bg-opacity-75 link-lg-none lg:bg-transparent lg:w-auto lg:h-auto lg:bg-opacity-0">
+          <ul className="flex absolute w-1/2 h-screen top-0 bg-White items-start flex-col lg:flex-row lg:relative lg:w-auto lg:h-auto lg:top-[-4px]  lg:bg-transparent lg:items-center lg:flex-none lg:inset-x-auto lg:justify-center">
+            <CloseIcon fill="#adb5bd" className="lg:hidden m-4 inset-0" />
             {navLinks.map((link) => (
               <li
                 key={link.id}
                 onClick={(e) => handleLinkClick(e, link.id)}
-                className="p-4 m-2 cursor-pointer duration-300"
+                className="p-2 m-2 cursor-pointer duration-300 lg:p-4"
               >
                 <a
                   href={link.href}
-                  className={`text-[#adb5bd] relative pb-[36px] ${
+                  className={`text-black text-sm font-kumbh font-bold hover:text-Very-dark-blue lg:text-[#adb5bd] relative pb-[36px] ${
                     activeLink === link.id
-                      ? "hover:text-[#adb5bd]"
-                      : "hover:text-[#868e96]"
+                      ? "hover:text-black lg:hover:text-[#adb5bd]"
+                      : "hover:text-Very-dark-blue lg:hover:text-[#868e96]"
                   }`}
                 >
                   {link.label}
                   {activeLink === link.id && (
-                    <span className="absolute left-0 right-0 bottom-0 h-1 w-auto bg-[#ff922b]"></span>
+                    <span className="lg:link-lg"></span>
                   )}
                 </a>
               </li>
@@ -206,14 +207,14 @@ const NavBar = ({ quantity, onCartOpen, cart }) => {
 
 const Cart = ({ cart, setQuantity, onRemoveCart }) => {
   return (
-    <div className="bg-White h-[280px] overflow-auto w-[400px] shadow-2xl rounded-xl absolute top-20 right-8 z-10">
+    <div className="bg-White h-[400px] w-[460px] inset-x-0 shadow-2xl overflow-auto rounded-xl absolute top-[100px] z-10 mx-auto lg:inset-y-20 lg:right-[-900px]">
       <div>
         <h1 className="font-bold text-xl font-kumb border-b border-Light-Grayish-blue p-6 ">
           Cart
         </h1>
         {cart.length === 0 ? (
-          <div className="flex items-center justify-center">
-            <p className="font-bold text-xl text-Grayish-blue mt-12">
+          <div className="flex items-center justify-center relative">
+            <p className="font-bold text-xl text-Grayish-blue mt-[120px] absolute top-1/2 transform -translate-y-1/2">
               Your cart is empty.
             </p>
           </div>
@@ -277,13 +278,13 @@ const Hero = ({
     // grid grid-template-rows-[1fr auto] py-16 px-4 w-screen md:grid-cols-2 mx-auto bg-red-500
     // grid mx-auto pt-12 p-16 grid-cols-1 gap-y-0 lg:container lg:pt-40 lg:grid-cols-2 lg:items-center lg:gap-x-0
     <section className="mb-16 z-0 py-8">
-      <div className="lg:grid lg:mx-auto  lg:p-16 lg:grid-cols-2 lg:gap-y-0 lg:container lg:pt-40 lg:items-center lg:gap-x-0">
+      <div className="pt-10  lg:grid lg:mx-auto  lg:p-16 lg:grid-cols-2 lg:gap-y-0 lg:container lg:pt-40 lg:items-center lg:gap-x-0">
         <div className="lg:mx-auto flex gap-6 flex-col">
           <div className="relative">
             <img
               src={mainImage}
               alt=""
-              className="w-full lg:w-[400px]  rounded-md"
+              className="w-full lg:w-[400px] rounded-none lg:rounded-md"
               onClick={onOpenLightbox}
             />
             <div

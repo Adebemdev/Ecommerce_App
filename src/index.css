@@ -31,6 +31,13 @@
     max-width: 1440px;
     margin: 0 auto;
   } */
+
+  .link-lg {
+    @apply absolute left-0 right-0 bottom-0 h-1 w-auto bg-[#ff922b];
+  }
+  .link-lg-none {
+    @apply absolute inset-x-0 top-0;
+  }
 }
 
 @layer utilities {
@@ -54,5 +61,12 @@
     width: 100%;
     height: 100%;
     background: hsl(220, 14%, 75%);
+  }
+
+  .link-none {
+    position: none;
+    left: 0;
+    right: 0;
+    top: 0;
   }
 }
