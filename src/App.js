@@ -13,6 +13,30 @@ import minusIcon from "./assets/icons/icon-minus.svg";
 import avatarImg from "./image-avatar.png";
 import { sneakers } from "./constants";
 
+const newItems = [
+  {
+    id: 1,
+    name: "Fall Limited Edition sneaker",
+    quantity: 1,
+    price: 125.0,
+    thumbnail: sneakers[0].thumbnail,
+  },
+  {
+    id: 2,
+    name: "Fall Limited Edition sneaker",
+    quantity: 2,
+    price: 125.0,
+    thumbnail: sneakers[1].thumbnail,
+  },
+  {
+    id: 3,
+    name: "Fall Limited Edition sneaker",
+    quantity: 3,
+    price: 125.0,
+    thumbnail: sneakers[2].thumbnail,
+  },
+];
+
 const App = () => {
   const [quantity, setQuantity] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -44,58 +68,30 @@ const App = () => {
     setCartOpen((cartOpen) => !cartOpen);
   };
 
-  const handleIncreament = (itemId) => {
-    const existItem = cart.find((item) => item.id === itemId);
-    if (existItem) {
-      const updateItem = cart.map((item) =>
-        item.id === itemId
-          ? {
-              ...item,
-              quantity: quantity + 1,
-            }
-          : item
-      );
-      setCart(updateItem);
-    } else {
-      const newItem = {
-        id: sneakers[currentIndex].id,
-        name: "Fall Limited Edition sneaker",
-        quantity: quantity,
-        price: 125,
-        thumbnail: sneakers[currentIndex].thumbnail,
+  const handleIncreament = (itemId) => {};
+
+  const handleDecreament = (itemId) => {};
+
+  const handleAddToCart = (cartId) => {
+    const existingItem = cart.find((item) => item.id === cartId);
+    console.log(existingItem);
+    if (existingItem) {
+      return {
+        ...cart,
+        quantity: cart.quantity ? cart.quantity + 1 : 1,
       };
-      setCart([...cart, newItem]);
+    } else {
+      setCart([
+        ...cart,
+        {
+          id: 3,
+          name: "Fall Limited Edition sneaker",
+          quantity: 3,
+          price: 125.0,
+          thumbnail: sneakers[2].thumbnail,
+        },
+      ]);
     }
-    setQuantity(cart.length + 1);
-  };
-
-  const handleDecreament = (itemId) => {
-    const updateCartItem = cart
-      .map((item) => {
-        if (item.id === itemId) {
-          const newQuantity = item.quantity - 1;
-          if (newQuantity > 0) {
-            return { ...item, quantity: newQuantity };
-          }
-        }
-        return item;
-      })
-      .filter((item) => item.quantity > 0);
-    setCart(updateCartItem);
-    setQuantity(
-      updateCartItem.reduce((total, item) => total + item.quantity, 0)
-    );
-  };
-
-  const handleAddToCart = () => {
-    const newItem = {
-      id: sneakers[currentIndex].id,
-      name: "Fall Limited Edition sneaker",
-      quantity: quantity,
-      price: 125.0,
-      thumbnail: sneakers[currentIndex].thumbnail,
-    };
-    setCart([...cart, newItem]);
     setQuantity((quantity) => quantity + 1);
   };
 
@@ -118,6 +114,7 @@ const App = () => {
         />
       )}
       <Hero
+        cart={cart}
         quantity={quantity}
         onIncrease={handleIncreament}
         onDecrease={handleDecreament}
@@ -127,9 +124,12 @@ const App = () => {
         onNext={handleNext}
         currentIndex={currentIndex}
         setCurrentIndex={setCurrentIndex}
-        onAddToCart={handleAddToCart}
+        // onAddToCart={handleAddToCart}
+        handleAddToCart={handleAddToCart}
       />
-      {lightboxOpen && <LightBox onCloseLightbox={CloseLightbox} />}
+      {lightboxOpen && (
+        <LightBox onCloseLightbox={CloseLightbox} className={``} />
+      )}
     </div>
   );
 };
@@ -215,7 +215,7 @@ const NavBar = ({ quantity, onCartOpen, cart }) => {
             <img
               src={avatarImg}
               alt="avatar"
-              className="w-10 h-10 border-2 rounded-full border-primary-orange"
+              className="w-10 h-10 hover:border-2 rounded-full hover:border-primary-orange hover:duration-200 hover:ease-in-out hover:transition-transform hover:transform hover:will-change-transform"
             />
           </li>
         </ul>
@@ -290,7 +290,8 @@ const Hero = ({
   onNext,
   currentIndex,
   setCurrentIndex,
-  onAddToCart,
+  // onAddToCart,
+  handleAddToCart,
 }) => {
   return (
     <section className="mb-16 z-0">
@@ -388,12 +389,9 @@ const Hero = ({
               </div>
               <div
                 className="bg-primary-orange shadow-3xl rounded-lg p-4 w-full lg:w-1/2 flex gap-4 items-center justify-center transition-transform transform hover:scale-105 outline-none border-none duration-200 will-change-transform"
-                onClick={onAddToCart}
+                onClick={() => handleAddToCart(newItems.id)}
               >
-                <button
-                  className="flex items-center justify-center"
-                  // onClick={onAddToCart}
-                >
+                <button className="flex items-center justify-center">
                   <CartIcon fill="hsl(0, 0%, 100%)" />
                 </button>
                 <button>

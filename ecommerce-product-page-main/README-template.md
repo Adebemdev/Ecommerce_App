@@ -20,7 +20,10 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
 
 ## Overview
 
--
+-This project is centered on shopping store
+-where a user can buy their items and store all their goos into the cart,
+-with this project you can easiy order for an items and
+-buy any itens at your own disposal.
 
 ### The challenge
 
